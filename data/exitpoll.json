@@ -130,7 +130,7 @@
       ],
       "parlamentarios":[
         {"id":"1",
-          "partido": "Centro Democrático Nacional",
+          "partido": "Centro Democrático - Izquierda Democrática",
                   "lista": "1",
                   "imagenLista": "images/listas/1.jpg",
                   "candidatos":[],
@@ -140,7 +140,7 @@
         ],
         "asambleistas":[
         {"id":"1",
-          "partido": "Centro Democrático Nacional",
+          "partido": "Centro Democrático - Izquierda Democrática",
                   "lista": "1",
                   "imagenLista": "images/listas/1.jpg",
                   "candidatos":[],
