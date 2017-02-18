@@ -13,7 +13,7 @@ router.get('/:tablename', function(req, res){
     var tableName = req.params.tablename;
     var arr = [];
 
-    fs.readFile("data/exitpoll.json", 'utf8',
+    fs.readFile("data/exitpoll_prueba.json", 'utf8',
         function (err, texto) {
             var objJSONFromFile = JSON.parse(texto);
             switch (tableName){
@@ -60,31 +60,29 @@ router.get('/:tablename/:id', function(req, res){
         aux = 0;
     }else aux = 1;
     
-    fs.readFile("data/exitpoll.json", 'utf8',
+    fs.readFile("data/exitpoll_prueba.json", 'utf8',
         function (err, texto) {
-            var objJSONFromFile = JSON.parse(texto);    
+            var objJSONFromFile = JSON.parse(texto);
         
             switch (tableName){
                 case 'asambleistas':
                 case 'binomios':
                 case 'parlamentarios':
                         obj = objJSONFromFile.elecciones[0][tableName][rowId - aux];
-                        newId = objJSONFromFile.elecciones[0][tableName].lenght;
+                        newId = objJSONFromFile.elecciones[0][tableName].length + 1;
                     break;
                 case 'elecciones':
                         obj = objJSONFromFile.elecciones[rowId - aux];
-                        newId = objJSONFromFile.elecciones.lenght;
+                        newId = objJSONFromFile.elecciones.length  + 1;
                     break;
                 case 'usuarios':
                         obj = objJSONFromFile.usuarios[rowId - aux];
-                        newId = objJSONFromFile.usuarios.lenght;
+                        newId = objJSONFromFile.usuarios.length  + 1;
                     break;
                 case 'dignidades':
                     break;
                 default:
             }
-        
-        console.log("nueva id: " + newId)
         if (rowId === '0'){
             res.render('pages/CRUDinsert', {"tableName":tableName, "obj":obj, 'mode':'new', 'newId':newId});
         }else res.render('pages/CRUDinsert', {"tableName":tableName, "obj":obj, 'mode':'edit'});
@@ -95,6 +93,44 @@ router.get('/:tablename/:id', function(req, res){
         }
     );
 });
+
+
+router.post('/:tablename/:id', function(req, res){
+    var tableName = req.params.tablename;
+    var newObj = {};
+    var response = {}
+    
+    for (var attr in req.body){
+        newObj[attr] = req.body[attr];
+    }
+    
+    console.log(newObj)
+    
+    fs.readFile('data/exitpoll_prueba.json', 'utf8',
+        function (err, texto) {
+            var objJSONFromFile = JSON.parse(texto);
+        
+            switch (tableName){
+                case 'asambleistas':
+                case 'binomios':
+                case 'parlamentarios':
+                        objJSONFromFile.elecciones[0][tableName].push(newObj);
+                    break;
+                case 'elecciones':
+                        obj = objJSONFromFile.elecciones.push(newObj);
+                    break;
+                case 'usuarios':
+                        obj = objJSONFromFile.usuarios.push(newObj);
+                    break;
+                case 'dignidades':
+                    break;
+                default:
+            }
+        fs.writeFile('data/exitpoll_prueba.json', JSON.stringify(objJSONFromFile, null, 3)); 
+        res.redirect('/admin/'+ tableName)
+    });
+});
+
 
 //router.get('/:asambleistaaaas', function(req, res){
 // 
