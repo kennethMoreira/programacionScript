@@ -52,6 +52,7 @@ router.get('/:tablename', function(req, res){
 router.get('/:tablename/:id', function(req, res){
     var tableName = req.params.tablename;
     var rowId = req.params.id;
+    var newId = 0;
     var aux = 0;
     var obj = {};
     
@@ -68,12 +69,15 @@ router.get('/:tablename/:id', function(req, res){
                 case 'binomios':
                 case 'parlamentarios':
                         obj = objJSONFromFile.elecciones[0][tableName][rowId - aux];
+                        newId = objJSONFromFile.elecciones[0][tableName].lenght;
                     break;
                 case 'elecciones':
                         obj = objJSONFromFile.elecciones[rowId - aux];
+                        newId = objJSONFromFile.elecciones.lenght;
                     break;
                 case 'usuarios':
                         obj = objJSONFromFile.usuarios[rowId - aux];
+                        newId = objJSONFromFile.usuarios.lenght;
                     break;
                 case 'dignidades':
                     break;
@@ -81,7 +85,7 @@ router.get('/:tablename/:id', function(req, res){
             }
         
         if (rowId === '0'){
-            res.render('pages/CRUDinsert', {"tableName":tableName, "obj":obj, 'mode':'new'});
+            res.render('pages/CRUDinsert', {"tableName":tableName, "obj":obj, 'mode':'new', 'newId':newId});
         }else res.render('pages/CRUDinsert', {"tableName":tableName, "obj":obj, 'mode':'edit'});
             
 //            res.render('pages/CRUDinsert', {"tableName":tableName, "obj":arr[0]}, function(err, html){

@@ -16,14 +16,22 @@
                         <h2>Nuevo <%= tableName %></h2>
                             <% for (var attr in obj){ %>
                                 <label><%= attr %></label>
-                                <input type='text' name='<%= attr %>' class='form-TextBox'>
+                                <% if (attr === 'id') {%>
+                                    <input type='text' name='<%= attr %>' class='form-TextBox' value='<%= newId %>' readonly>
+                                <% }else {%>
+                                    <input type='text' name='<%= attr %>' class='form-TextBox'>
+                                <% } %>
                             <% } %>
                             <input id='saveButton' class='form-button' type="submit" value='Guardar' onclick='submit()'>
                     <% }else if (mode === 'edit') { %>
                         <h2>Editar <%= tableName %></h2>
                             <% for (var attr in obj){ %>
                                 <label><%= attr %></label>
-                                <input type='text' name='<%= attr %>' class='form-TextBox' value='<%= obj[attr] %>'>
+                                <% if (attr === 'id') {%>
+                                    <input type='text' name='<%= attr %>' class='form-TextBox' value='<%= obj[attr] %>' readonly>
+                                <% }else {%>
+                                    <input type='text' name='<%= attr %>' class='form-TextBox' value='<%= obj[attr] %>'>
+                                <% } %>
                             <% } %>
                             <input id='saveButton' class='form-button' type='button' value='Actualizar' onclick='update()'>
                     <% } %>
