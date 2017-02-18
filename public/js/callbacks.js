@@ -36,7 +36,7 @@ function login(user, pass, autolog){
                 
             alert("Bienvenido " + data.loggedUser.name);
             
-            window.location.assign('/' + data.loggedUser.userType + '?key=koko69');
+            window.location.assign('/' + data.loggedUser.userType);
 //            }
             
 //            toogleUserInfo();
@@ -168,6 +168,47 @@ $(document).ready(function(){
         sessionStorage.removeItem('loggedUser');
         window.location.assign('/login');
     });
+    
+    
+    $('#btnEncuestaNueva').on('click', function(){
+       var cedula = prompt('Ingrese el número de cédula');
+//        console.log(cedula);
+        
+        
+        var url = '/encue/votos/' + cedula;
+	    var datos = {
+		    data: {
+                'id':cedula},
+            type: 'POST',
+            datatype: 'json'
+        };
+
+//        console.log(datos.data.id)
+        
+        $.ajax(url, datos)
+        .done(function(data, status, xhr){
+            //Mostrar la respuesta utilizando DOM y CSS
+            
+            console.log(data)
+//            data = JSON.parse(data);
+            if (data.saved){
+                alert('Nueva votación creada');
+                window.location.assign('/encue/votos/' + data.id);
+
+            }else {
+                
+                alert("No se creo votación");
+            }
+        })
+        .fail(function(xhr, status, error){
+            alert('ERROR DE CONEXIÓN');
+        });
+
+        
+        
+        
+    });
+    
     
 });
 

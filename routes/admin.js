@@ -70,15 +70,15 @@ router.get('/:tablename/:id', function(req, res){
                 case 'binomios':
                 case 'parlamentarios':
                         obj = objJSONFromFile.elecciones[0][tableName][rowId - aux];
-                        newId = objJSONFromFile.elecciones[0][tableName].length;
+                        newId = objJSONFromFile.elecciones[0][tableName].length + 1;
                     break;
                 case 'elecciones':
                         obj = objJSONFromFile.elecciones[rowId - aux];
-                        newId = objJSONFromFile.elecciones.length;
+                        newId = objJSONFromFile.elecciones.length + 1;
                     break;
                 case 'usuarios':
                         obj = objJSONFromFile.usuarios[rowId - aux];
-                        newId = objJSONFromFile.usuarios.length;
+                        newId = objJSONFromFile.usuarios.length + 1;
                     break;
                 case 'dignidades':
                     break;
