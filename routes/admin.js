@@ -91,40 +91,23 @@ router.get('/:tablename/:id', function(req, res){
     );
 });
 
-router.get('/:asambleistas', function(req, res){
-    var tableName = req.params.table;
-    var arr = [];
-    
-    fs.readFile("data/exitpoll.json", 'utf8',
-        function (err, texto) {
-            var objJSONFromFile = JSON.parse(texto);
-            
-            switch (tableName){
-                case 'asambleistas':
-                case 'binomios':
-                case 'parlamentarios':
-                    for (var d of objJSONFromFile.elecciones[0].dignidades[tableName].candidatos){
-                        arr.push(d);
-                    }
-                    break;
-                case 'elecciones':
-                    break;
-                case 'usuarios':
-                    for (var u of objJSONFromFile.usuarios){
-                        arr.push(u);
-                    }
-                    break;
-                case 'dignidades':
-                    break;
-                default:
-                    
-            }
-            res.render('pages/CRUDinsert', {"tableName":tableName, "obj":arr[0], 'logged':true});
-//            res.render('pages/CRUDinsert', {"tableName":tableName, "obj":arr[0]}, function(err, html){
-//                res.send(html);
-//            });
-        }
-    );
-});
+//router.get('/:asambleistaaaas', function(req, res){
+// 
+//    var listaAsambleistas = [];
+//    
+//    fs.readFile("data/exitpoll.json", 'utf8',
+//        function (err, texto) {
+//            var objJSONFromFile = JSON.parse(texto);
+//            
+//    for (var d of objJSONFromFile.elecciones[0].asambleistas){
+//                        listaAsambleistas.push(d);
+//                    }
+//            res.render('pages/asambleistas', {"asambleistas":listaAsambleistas});
+////            res.render('pages/CRUDinsert', {"tableName":tableName, "obj":arr[0]}, function(err, html){
+////                res.send(html);
+////            });
+//        }
+//    );
+//});
 
 module.exports = router;
