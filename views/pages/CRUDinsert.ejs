@@ -10,19 +10,26 @@
        
         <div id='popUp'>
 
-
             <div id='popUpFormContainer' class='form-Container'>
-                <h2>Nuevo <%= tableName %></h2>
-                <div id="popUpForm" class='form'>
-                    <% for (var attr in obj){ %>
-            <!--            niu[attr] = '';-->
-                        <label><%= attr %></label>
-                        <input type='text' name='<%= attr %>' class='form-TextBox'>
+                <form id="popUpForm" class='form' action='/admin/<%= tableName %>/<%= obj.id %>' method='POST'>
+                    <% if (mode === 'new') { %>
+                        <h2>Nuevo <%= tableName %></h2>
+                            <% for (var attr in obj){ %>
+                                <label><%= attr %></label>
+                                <input type='text' name='<%= attr %>' class='form-TextBox'>
+                            <% } %>
+                            <input id='saveButton' class='form-button' type="submit" value='Guardar' onclick='submit()'>
+                    <% }else if (mode === 'edit') { %>
+                        <h2>Editar <%= tableName %></h2>
+                            <% for (var attr in obj){ %>
+                                <label><%= attr %></label>
+                                <input type='text' name='<%= attr %>' class='form-TextBox' value='<%= obj[attr] %>'>
+                            <% } %>
+                            <input id='saveButton' class='form-button' type='button' value='Actualizar' onclick='update()'>
                     <% } %>
-
-                    <button id='saveButton' class='form-button'>Guardar</button>
-                    <button id='cancelButton' class='form-button'>Cancel</button>
-                </div>
+                   
+                    <input id='cancelButton' class='form-button' value='Cancelar' onclick='window.location.assign("/admin/<%= tableName %>")'>
+                </form>
             </div>
 
         </div>
