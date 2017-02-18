@@ -9,27 +9,31 @@
     <% include ../partials/adminMenu %>
     
     <section id="content">
+           <div id="contenedorAsambleistas">
         	<% for (var i = 0; i < asambleistas.length ; i++){ %>
             <div class="asambleista">
-            <h4>Lista: </h4><%= asambleistas[i].lista%>
-            <h4>Partido: </h4><%= asambleistas[i].partido%>
-            <br>
+            <%= asambleistas[i].partido%>
+              <div id="listaAsambleista"> <%= asambleistas[i].lista%> </div>
+            
+            
             <img src='/<%= asambleistas[i].imagenLista %>' width='50px'>
             <h4>Candidatos</h4>
+
              <%
                         for (candi of asambleistas[i].candidatos){%>
-                            <%= candi %>
+                            *<%= candi %>
                             <br>
                         <%
                         }
                         %>
+
             
         
 
 
             </div>
 	    <% } %>
-   
+   </div>
     </section>
 </body>
 </html>

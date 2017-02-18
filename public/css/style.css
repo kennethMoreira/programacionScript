@@ -417,9 +417,38 @@ footer{
     padding: 20px;
 }
 
-@media only screen and (min-width: 481px){
+#contenedorAsambleistas{
+    display: inline-block;
+    width: 100%;
+    padding: 20px;
+    margin-top: 80px;
+    
+    overflow: auto;
+    
+    /*background-color: antiquewhite;*/
+    align-items: center;
+}
+.asambleista{    
+    position: relative;
+    display: inline-block;
+    width: 20%;
+    border: black solid 1px;
+    margin-right: 20px;
+}
+#listaAsambleista{
+    font-size: 50px;
+}
+
+@media only screen and (min-width: 200px) and (max-width: 481px) {
     .form-Container{
         width: 440px;
+    }
+    #contenedorAsambleistas{
+        padding-top: 2000px;
+    }
+    .asambleista{
+        display: block;
+        width: 100%;
     }
 }
 
