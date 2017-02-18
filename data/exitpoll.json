@@ -229,11 +229,74 @@
           
         ],
         "parlamentarios":[
-         {"id":"",
-          "partido": "",
-                  "lista": "",
-                  "imagenLista": "images/listas/",
-                  "candidatos":["","","","",""],
+         {"id":"1",
+          "partido": "Centro Democrático",
+                  "lista": "1",
+                  "imagenLista": "images/listas/1.jpg",
+                  "candidatos":["Ledesma Huerta Raul Clemente","Macias Mecias Monavel Patricia	","Escobar Chavez Alfredo Edison	","Vera Sanchez Yaritza Dallana	","Guaranda Sanchez Arsenio Silverio"],
+                  "votos":0
+          
+        },{"id":"2",
+          "partido": "Partido Sociedad Patriótica 21 de Enero",
+                  "lista": "3",
+                  "imagenLista": "images/listas/3.png",
+                  "candidatos":["Johnson Lopez Edwin Ramon	","Fuentes Flores Pubenza Maria	","Bernys Chavez Hugo Bladimir	","Samaniego Salazar Carmen Luisa	","Aviles Jaramillo Christian Alfonso"],
+                  "votos":0
+          
+        },{"id":"3",
+          "partido": "Fuerza Compromiso Social",
+                  "lista": "5",
+                  "imagenLista": "images/listas/5.png",
+                  "candidatos":["Vasconez Nolivos Diana Carolina	","Torres Egas Lombardo Anibal	","Garcia Morla Shirley Marianella	","Abrajan Cela Jorge Ernesto	","Merizalde Quiroz Sylvia Grace"],
+                  "votos":0
+          
+        },{"id":"4",
+          "partido": "Partido Social Cristiano",
+                  "lista": "6",
+                  "imagenLista": "images/listas/6.png",
+                  "candidatos":["Teran Basso Patricia Mabel","Moreno Quezada Franklin Bolivar","Alarcon Campuzano Maria De Lourdes","Jara Ruiz Alex Geovanny","Piguave Iperty Roxana Isabel"],
+                  "votos":0
+          
+        },{"id":"5",
+          "partido": "Adelante Ecuatoriano Adelante",
+                  "lista": "7",
+                  "imagenLista": "images/listas/7.jpg",
+                  "candidatos":["Sanchez Castello Wilson Homero","Cabrera Heras Bella America","Lorences Cardenas Juan Andres","Ayala Trujillo Sandra Esmeraldas Del Pilar","Monserrate Ycaza Erick Ernesto"],
+                  "votos":0
+          
+        },{"id":"6",
+          "partido": "Partido Político Avanza",
+                  "lista": "8",
+                  "imagenLista": "images/listas/8.jpg",
+                  "candidatos":["Muñoz Carrasco Luis Alfredo","Cevallos Alava Exita Alexandra","Torres Espinosa Wilson Enrique","Alvarez Cedeño Maria Paola","Alarcon Sanchez Raul Rodrigo"],
+                  "votos":0
+          
+        },{"id":"7",
+          "partido": "Fuerza.EC",
+                  "lista": "10",
+                  "imagenLista": "images/listas/10.png",
+                  "candidatos":["Jara Triviño Edgar Atahualpa","Castro Cordero Maria Katerine","Calle Madrid Jose Jesus","Leguizamo Sarmiento Stefany Rosalba","Jara Mediavilla David Daniel"],
+                  "votos":0
+          
+        },{"id":"8",
+          "partido": "Acuerdo Por El Cambio",
+                  "lista": "12-2-18",
+                  "imagenLista": "images/listas/12-2-18.hpg",
+                  "candidatos":["Tiban Guala Lourdes Licenia","Polanco Reyes Diego Lenin","Rassa Parra Ingrid Pilar","Realpe Raza Gonzalo Antonio","Hinojosa Olmedo Carmen Victoria"],
+                  "votos":0
+          
+        },{"id":"9",
+          "partido": "Alianza CREO - SUMA",
+                  "lista": "21-23",
+                  "imagenLista": "images/listas/21-23.png",
+                  "candidatos":["Cobo Montalvo Fausto Antonio","Diaz Chiran Ines Del Rocio","Monsalve Tamariz Diego Andres","Sarmiento Garzon Magaly Del Rocio","Vera Garcia Ramon Heriberto"],
+                  "votos":0
+          
+        },{"id":"10",
+          "partido": "Acuerdo Mov. Alianza País - Partido Socialista Ecuatoriano",
+                  "lista": "35-17",
+                  "imagenLista": "images/listas/35-17.jpg",
+                  "candidatos":["Quiroz Vallejo Hector Hugo","Cardenas Hernandez Rosa Mireya","Dutan Erraez Fausto Ramiro","Aguirre Zambonino Pamela Alejandra","Carranza Alvarez Edgar Antonio"],
                   "votos":0
           
         }
