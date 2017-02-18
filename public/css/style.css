@@ -485,3 +485,15 @@ footer{
 .votar {
  
 }
+
+.binomios {
+      display: inline-block;
+    width: 100%;
+    padding: 20px;
+    margin-top: 80px;
+    
+    overflow: auto;
+    
+    /*background-color: antiquewhite;*/
+    align-items: center;
+}
