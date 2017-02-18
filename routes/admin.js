@@ -2,13 +2,14 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 
-
+// request -> http:/localhost:8081/admin/
 router.get('/', function(req, res){
     var key = req.params.key;
     console.log(key)
     res.render('pages/admin', {'logged':true});
 });
 
+// request -> http:/localhost:8081/admin/asambleistas
 router.get('/:tablename', function(req, res){
     var tableName = req.params.tablename;
     var arr = [];
@@ -62,27 +63,29 @@ router.get('/:tablename/:id', function(req, res){
     
     fs.readFile("data/exitpoll_prueba.json", 'utf8',
         function (err, texto) {
-            var objJSONFromFile = JSON.parse(texto);
+            var objJSONFromFile = JSON.parse(texto);    
         
             switch (tableName){
                 case 'asambleistas':
                 case 'binomios':
                 case 'parlamentarios':
                         obj = objJSONFromFile.elecciones[0][tableName][rowId - aux];
-                        newId = objJSONFromFile.elecciones[0][tableName].length + 1;
+                        newId = objJSONFromFile.elecciones[0][tableName].lenght;
                     break;
                 case 'elecciones':
                         obj = objJSONFromFile.elecciones[rowId - aux];
-                        newId = objJSONFromFile.elecciones.length  + 1;
+                        newId = objJSONFromFile.elecciones.lenght;
                     break;
                 case 'usuarios':
                         obj = objJSONFromFile.usuarios[rowId - aux];
-                        newId = objJSONFromFile.usuarios.length  + 1;
+                        newId = objJSONFromFile.usuarios.lenght;
                     break;
                 case 'dignidades':
                     break;
                 default:
             }
+        
+        console.log("nueva id: " + newId)
         if (rowId === '0'){
             res.render('pages/CRUDinsert', {"tableName":tableName, "obj":obj, 'mode':'new', 'newId':newId});
         }else res.render('pages/CRUDinsert', {"tableName":tableName, "obj":obj, 'mode':'edit'});

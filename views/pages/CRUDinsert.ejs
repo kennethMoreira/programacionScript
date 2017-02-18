@@ -22,7 +22,7 @@
                                     <input type='text' name='<%= attr %>' class='form-TextBox'>
                                 <% } %>
                             <% } %>
-                            <input id='saveButton' class='form-button' type="submit" value='Guardar' onclick='submit()'>
+                            <input id='saveButton' class='form-button' type="submit" value='Guardar' onclick='alert('pila');submit()'>
                     <% }else if (mode === 'edit') { %>
                         <h2>Editar <%= tableName %></h2>
                             <% for (var attr in obj){ %>
