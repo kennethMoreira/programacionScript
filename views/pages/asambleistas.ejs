@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <% include ../partials/head %>
+</head>
+<body>
+    <% include ../partials/header %>
+    
+    <% include ../partials/adminMenu %>
+    
+    <section id="content">
+        	<% for (var i = 0; i < asambleistas.length ; i++){ %>
+            <div class="asambleista">
+            <h4>Partido: <%= asambleistas[i].partido%></h4>
+
+
+            </div>
+	    <% } %>
+   
+    </section>
+</body>
+</html>
