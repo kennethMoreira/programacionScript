@@ -141,9 +141,9 @@
         "asambleistas":[
         {"id":"1",
           "partido": "Centro Democrático - Izquierda Democrática",
-                  "lista": "1",
+                  "lista": "1-12",
                   "imagenLista": "images/listas/1.jpg",
-                  "candidatos":[],
+                  "candidatos":["Valdivieso Escobar María Lourdes", "Sandoval Baquerizo Xavier Abdon", "Pachito Quintero Maria Lucetty"],
                   "votos":0
           
         }
