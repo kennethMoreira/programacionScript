@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <% include ../partials/head %>
+</head>
+<body>
+    <% include ../partials/header %>
+    <% include ../partials/adminMenu %>
+    <section id="content">   
+       
+        <div id='popUp'>
+
+
+            <div id='popUpFormContainer' class='form-Container'>
+                <h2>Nuevo <%= tableName %></h2>
+                <div id="popUpForm" class='form'>
+                    <% for (var attr in obj){ %>
+            <!--            niu[attr] = '';-->
+                        <label><%= attr %></label>
+                        <input type='text' name='<%= attr %>' class='form-TextBox'>
+                    <% } %>
+
+                    <button id='saveButton' class='form-button'>Guardar</button>
+                    <button id='cancelButton' class='form-button'>Cancel</button>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+</body>
+</html>

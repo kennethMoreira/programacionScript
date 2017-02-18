@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <% include ../partials/head %>
+</head>
+<body>
+    <% include ../partials/header %>
+    <% include ../partials/adminMenu %>
+    <section id="content">   
+        <div class='CRUDContainer'>
+            <h2 class='CRUDTableTitle'>Lista de <%= tableName %></h2>
+            <button class='CRUD-button insert' onclick="window.location.assign('/admin/<%= tableName %>/insert')">
+<!--            <button class='CRUD-button insert' onclick="getForm('<%= tableName %>')">-->
+                <img src='/images/new_icon.png'>
+            </button>
+            <table>
+                <thead>
+                    <tr>
+                        <%
+                        for (attr in array[0]){%>
+                            <th><%= attr %></th>
+                        <%
+                        }
+                        %>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                    for (var row of array){ %>
+                    <tr>
+                   <%   for (var attr in row){ %>
+                            <td>
+                                <b class='table-cell-label'><%= attr %></b>
+                                <% if (attr.includes('imagen') || attr.includes('photo')){ %>
+                                    <img src='/<%= row[attr] %>' width='50px'>
+                                <% }else{ %>
+                                   <span class='table-cell-content'><%= row[attr] %></span>
+                                <% } %>
+                            </td>
+                        <% } %>
+
+                        <td>
+                            <b class='table-cell-label'>Acciones</b>
+                            <span class='table-cell-content'>
+                                <button class='CRUD-button edit'>
+                                    <img src='/images/edit_icon.png'>
+                                </button>
+                                <button class='CRUD-button delete'>
+                                    <img src='/images/delete_icon.png'>
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<div id='menuContainer'>
+        <div id='loggedUser-menu'>
+            <img class='loggedUserPicture'>
+            <label class="loggedUserName"></label>
+            <label class="loggedUserType"></label>
+        </div>
+        
+        <nav id='menuAdminCRUD' class='userMenu'>
+            <ul>
+                <li id='ali0'><a href='/admin/asambleistas' data-table-name='asambleistas'>Asambleístas</a></li>
+                <li id='ali1'><a href='/admin/binomios' data-table-name='binomios'>Binomios</a></li>
+                <li id='ali2'><a href='/admin/elecciones' data-table-name='elecciones'>Elecciones</a></li>
+                <li id='ali3'><a href='/admin/dignidades' data-table-name='dignidades'>Dignidades</a></li>
+                <li id='ali4'><a href='/admin/parlamentarios' data-table-name='parlamentarios'>Parlamentarios</a></li>
+                <li id='ali5'><a href='/admin/usuarios' data-table-name='usuarios'>Usuarios</a></li>
+            </ul>
+        </nav>
+        
+        <nav id = 'menuGraficos' class ='userMenu'>
+        <ul>
+            <li>
+                <a id='show-graph-bin' onclick='generarGraficoBinomio()'>MOSTRAR GRAFICO BINOMIOS</a>
+            </li>
+                <li>
+                <a id='show-graph-asa' onclick='generarGraficoAsambleistas()'>MOSTRAR GRAFICO ASAMBLEISTAS</a>
+            </li>
+                <li>
+                <a id='show-graph-par' onclick='generarGraficoParlamentarios()'>MOSTRAR GRAFICO PARLAMENTARIOS</a>
+            </li>
+        </ul>
+        </nav>
+        
+        <button id='menuLogoutBtn' class="form-button logoutBtn">Salir</button>
+        <footer>
+            <nav>
+                <ul>
+                    <li><span>© 2016 Team FCK</span></li>
+                </ul>
+                
+            </nav>
+            
+        </footer>
+</div>

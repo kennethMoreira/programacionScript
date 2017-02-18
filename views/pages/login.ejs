@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <% include ../partials/head %>
+</head>
+<body>
+    <% include ../partials/header %>
+    <section id="content">
+        <div id="loginFormContainer" class='form-Container'>
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm" class='form'>
+                <label>Usuario:</label>
+                <input id='userBox' type="text" name='user' class="form-TextBox" placeholder="Ingrese su usuario" autofocus required>
+                <label>Contraseña:</label>
+                <input id='passBox' type="password" name='pass' class="form-TextBox" placeholder="Ingrese su contraseña" required>
+                <input id='checkLogin' type='checkbox' name='rememberMe' value='true'>Recordarme
+                <input id="loginButton" type="button" class="form-button" value="Ingresar">
+<!--                <button id="loginButton" class="form-button">Ingresar</button>-->
+            </form>
+        </div>
+    </section>
+    
+    
+<!--
+    <div id="graficoBinomio"></div>
+    <div id="graficoAsambleistas"></div>
+    <div id="graficoParlamentario"></div>
+-->
+    
+    
+</body>
+</html>
