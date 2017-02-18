@@ -1,6 +1,6 @@
 {
   "usuarios": [
-    {
+  {
       "id": 1,
       "user": "admin1",
       "pass": "1234",
@@ -31,23 +31,16 @@
       "key":""
     }
   ],
-  "elecciones": [
-    {
-      "id": "1",
+   "elecciones":[{
+    "id": "1",
       "titulo": "elecciones2017",
       "fecha": "19 de febrero del 2017",
       "descripcion": "Elecciones presidenciales 2017",
       "cedulasVotantes": [],
-      "dignidades": 
+    "binomios":[
       {
-        "binomios":
-        {
-              "id": "1",
-              "nombre": "Binomio",
-              "candidatos": [
-                {
-                  "id": "1",
-                  "presidente": "Paco Moncayo",
+        "id":"1",
+        "presidente": "Paco Moncayo",
                   "imagenPresi": "images/candidatos/Paco Moncayo.jpg",
                   "vicepresidente": "Monserrat Bustamante",
                   "imagenVice": "images/candidatos/Monserrat Bustamante.jpg",
@@ -55,7 +48,7 @@
                   "partido": "Acuerdo Nacional Por El Cambio",
                   "imagenLista": "images/listas/2-12-18.png",
                   "lista": "2-12-18"
-                },
+      },
                 {
                   "id": "2",
                   "presidente": "Patricio Zuquilanda",
@@ -133,257 +126,32 @@
                   "imagenLista": "images/listas/35.png",
                   "lista": "35"
                 }
-              ]
-        },
-        "parlamentarios":
-            {
-              "id": "2",
-              "nombre": "Parlamentario",
-              "candidatos": [
-                {
-                  "id": "1",
-                  "nombre": "Raul Ledesma",
-                  "partido": "Centro Democrático Nacional",
+      
+      ],
+      "parlamentarios":[
+        {"id":"1",
+          "partido": "Centro Democrático Nacional",
                   "lista": "1",
                   "imagenLista": "images/listas/1.jpg",
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "voto": 20
-                },
-                {
-                  "id": "2",
-                  "nombre": "Lourdes Tibán",
-                  "partido": "Acuerdo Nacional Por El Cambio",
+                  "candidatos":[],
+                  "votos":0
+          
+        }
+        ],
+        "asambleistas":[
+        {"id":"1",
+          "partido": "Centro Democrático Nacional",
                   "lista": "1",
                   "imagenLista": "images/listas/1.jpg",
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "voto": 10
-                },
-                {
-                  "id": "3",
-                  "nombre": "Lenin Polanco",
-                  "partido": "Acuerdo Nacional Por El Cambio",
-                  "lista": "1",
-                  "imagenLista": "images/listas/1.jpg",
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "voto": 5
-                },
-                {
-                  "id": "4",
-                  "nombre": "Pilar Rassa",
-                  "partido": "Acuerdo Nacional Por El Cambio",
-                  "lista": "1",
-                  "imagenLista": "images/listas/1.jpg",
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "voto": 50
-                },
-                {
-                  "id": "5",
-                  "nombre": "Gonzalo Realpe",
-                  "partido": "Acuerdo Nacional Por El Cambio",
-                  "lista": "1",
-                  "imagenLista": "images/listas/1.jpg",
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "voto": 34
-                },
-                {
-                  "id": "6",
-                  "nombre": "Carmen Hinojosa",
-                  "partido": "Acuerdo Nacional Por El Cambio",
-                  "lista": "1",
-                  "imagenLista": "images/listas/1.jpg",
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "voto": 22
-                },
-                {
-                  "id": "7",
-                  "nombre": "Patricia Terán",
-                  "partido": "partido Social Cristiano",
-                  "lista": "1",
-                  "imagenLista": "images/listas/1.jpg",
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "voto": 10
-                },
-                {
-                  "id": "8",
-                  "nombre": "Franklin Moreno",
-                  "partido": "partido Social Cristiano",
-                  "lista": "1",
-                  "imagenLista": "images/listas/1.jpg",
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "voto": 40
-                },
-                {
-                  "id": "9",
-                  "nombre": "María de Lourdes Alarcon",
-                  "partido": "partido Social Cristiano",
-                  "lista": "1",
-                  "imagenLista": "images/listas/1.jpg",
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "voto": 30
-                },
-                {
-                  "id": "10",
-                  "nombre": "Geovanny Jara",
-                  "partido": "partido Social Cristiano",
-                  "lista": "1",
-                  "imagenLista": "images/listas/1.jpg",
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "voto": 20
-                },
-                {
-                  "id": "11",
-                  "nombre": "Roxana Piguave",
-                  "partido": "partido Social Cristiano",
-                  "lista": "1",
-                  "imagenLista": "images/listas/1.jpg",
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "voto": 30
-                }
-              ]
-        },
-        "asambleistas":
-            {
-              "id": "3",
-              "nombre": "Asambleista",
-              "candidatos": [
-                {
-                  "id": "1",
-                  "nombre": "Jorge Norero",
-                  "partido": "Centro Democrático Nacional",
-                  "voto": 20,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                },
-                {
-                  "id": "2",
-                  "nombre": "Natalia Escobar",
-                  "zonas": "Nacionales",
-                  "voto": 30,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                },
-                {
-                  "id": "3",
-                  "nombre": "Jose Calvopina",
-                  "zonas": "Nacionales",
-                  "voto": 10,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                },
-                {
-                  "id": "4",
-                  "nombre": "Viviana Macias",
-                  "zonas": "Nacionales",
-                  "voto": 30,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                },
-                {
-                  "id": "5",
-                  "nombre": "Jorge Montero",
-                  "zonas": "Nacionales",
-                  "voto": 40,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                },
-                {
-                  "id": "6",
-                  "nombre": "Vanessa Pincay",
-                  "zonas": "Nacionales",
-                  "voto": 50,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                },
-                {
-                  "id": "7",
-                  "nombre": "Alfredo Chang",
-                  "zonas": "Nacionales",
-                  "voto": 30,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                },
-                {
-                  "id": "8",
-                  "nombre": "Karen Quimiz",
-                  "zonas": "Nacionales",
-                  "voto": 40,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                },
-                {
-                  "id": "9",
-                  "nombre": "Christopher Villacreses",
-                  "zonas": "Nacionales",
-                  "voto": 50,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                },
-                {
-                  "id": "10",
-                  "nombre": "Letty Bolanos",
-                  "zonas": "Nacionales",
-                  "voto": 20,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                },
-                {
-                  "id": "11",
-                  "nombre": "Jose Yungan",
-                  "zonas": "Nacionales",
-                  "voto": 15,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                },
-                {
-                  "id": "12",
-                  "nombre": "Delia Caicedo",
-                  "zonas": "Nacionales",
-                  "voto": 22,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                },
-                {
-                  "id": "13",
-                  "nombre": "Jose Salgado",
-                  "zonas": "Nacionales",
-                  "voto": 44,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                },
-                {
-                  "id": "14",
-                  "nombre": "Sofia Seminario",
-                  "zonas": "Nacionales",
-                  "voto": 60,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                },
-                {
-                  "id": "15",
-                  "nombre": "Antony Herrera",
-                  "zonas": "Nacionales",
-                  "voto": 15,
-                  "imagen": "images/candidatos/Raul Ledesma.jpg",
-                  "imagenLista": "images/listas/1.jpg",
-                  "lista": "1"
-                }
-              ]
-            }
-      }
-    }
-  ]
+                  "candidatos":[],
+                  "votos":0
+          
+        }
+        ]
+        
+   }]
+  
+  
+  
 }
+ 
