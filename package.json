@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "multer": "*",
+    "ejs": "^1.0.0"
+  }
+}
