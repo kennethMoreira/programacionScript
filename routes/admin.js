@@ -84,6 +84,7 @@ router.get('/:tablename/:id', function(req, res){
                 default:
             }
         
+        console.log("nueva id: " + newId)
         if (rowId === '0'){
             res.render('pages/CRUDinsert', {"tableName":tableName, "obj":obj, 'mode':'new', 'newId':newId});
         }else res.render('pages/CRUDinsert', {"tableName":tableName, "obj":obj, 'mode':'edit'});
