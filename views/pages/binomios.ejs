@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <% include ../partials/head %>
+</head>
+<body>
+    <% include ../partials/header %>
+    
+    <% include ../partials/adminMenu %>
+    
+    <section id="content">
+           
+        	<% for (var i = 0; i < binomios.length ; i++){ %>
+            <div class="binomios">
+            <h4>Partido: </h4> <h5><%= binomios[i].partido%></h5> <br>
+            <h4>Lista: </h4><h5><%= binomios[i].lista%></h5>     <br> 
+            <img src='/<%= binomios[i].imagenLista %>' width='50px'> <br>
+            
+            <button class='votar'> <img src='/images/vote_icon.png'> </button> <br><br>
+            
+                           
+                            <img src='/<%= binomios[i].imagenPresi %>' width='50px'> <br>
+                            <h4> <%= binomios[i].presidente%></h4> <br>
+                           
+                             <img src='/<%= binomios[i].imagenVice %>' width='50px'> <br>
+                            <h4><%= binomios[i].vicepresidente%> </h4>
+                            
+                        
+            
+        
+
+
+            </div>
+	    <% } %>
+   
+    </section>
+</body>
+</html>
