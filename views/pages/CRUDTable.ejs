@@ -9,7 +9,7 @@
     <section id="content">   
         <div class='CRUDContainer'>
             <h2 class='CRUDTableTitle'>Lista de <%= tableName %></h2>
-            <button class='CRUD-button insert' onclick="window.location.assign('/admin/<%= tableName %>/insert')">
+            <button class='CRUD-button insert' onclick="window.location.assign('/admin/<%= tableName %>/0')">
 <!--            <button class='CRUD-button insert' onclick="getForm('<%= tableName %>')">-->
                 <img src='/images/new_icon.png'>
             </button>
@@ -43,7 +43,7 @@
                         <td>
                             <b class='table-cell-label'>Acciones</b>
                             <span class='table-cell-content'>
-                                <button class='CRUD-button edit'>
+                                <button class='CRUD-button edit' onclick="window.location.assign('/admin/<%= tableName %>/<%= array.indexOf(row) +1 %>')">
                                     <img src='/images/edit_icon.png'>
                                 </button>
                                 <button class='CRUD-button delete'>
