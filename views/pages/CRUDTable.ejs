@@ -46,7 +46,7 @@
                                 <button class='CRUD-button edit' onclick="window.location.assign('/admin/<%= tableName %>/<%= array.indexOf(row) +1 %>')">
                                     <img src='/images/edit_icon.png'>
                                 </button>
-                                <button class='CRUD-button delete'>
+                                <button class='CRUD-button delete' onclick='deleteRow("<%= array.indexOf(row) +1 %>", "<%= tableName %>")'>
                                     <img src='/images/delete_icon.png'>
                                 </button>
                             </span>
