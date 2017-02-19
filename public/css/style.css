@@ -126,7 +126,7 @@ header{
 #menuContainer{
     text-align: center;
     position: fixed;
-/*    visibility: hidden;*/
+    visibility: hidden;
     display: block;
     left: 0px;
     width: 200px;
@@ -439,10 +439,14 @@ footer{
     font-size: 50px;
 }
 
-@media only screen and (min-width: 200px) and (max-width: 481px) {
+@media only screen and (min-width: 481px){
     .form-Container{
         width: 440px;
     }
+}
+
+
+@media only screen and (min-width: 200px) and (max-width: 481px) {
     #contenedorAsambleistas{
         padding-top: 2000px;
     }
