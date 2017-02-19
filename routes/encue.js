@@ -75,6 +75,23 @@ router.get('/votos/:id/asambleistas',function(req,res){
     
 });
 
+router.get('/votos/:id/parlamentarios',function(req,res){
+    
+    var listParlamentarios = [];
+       fs.readFile("data/exitpoll.json", 'utf8',
+        function (err, texto) {
+            var objJSONFromFile = JSON.parse(texto);
+            
+    for (var d of objJSONFromFile.elecciones[0].parlamentarios){
+                        listParlamentarios.push(d);
+                    }
+            res.render('pages/parlamentarios', {"parlamentarios":listParlamentarios});
+
+        }
+    );
+    
+});
+
 
 router.get('/asambleistas', function(req, res){
  
