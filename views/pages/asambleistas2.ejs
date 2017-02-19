@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <% include ../partials/head %>
+</head>
+<body>
+    <% include ../partials/header %>
+    
+    
+    
+   
+           <div class="papeleta">
+              
+           <h1>Eleleciones Generales 2017</h1>
+           <h2>Escoja a los asambleístas</h2>
+        	<% for (var i = 0; i < asambleistas.length ; i++){ %>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-1 binomios"  >
+            <div class="rowElementoPartido">
+                <h5><%= asambleistas[i].partido%></h5>              
+           </div>
+           
+           <div class="rowElementoLista">
+                          <h2><%= asambleistas[i].lista%></h2>     
+            
+           </div>
+           <div class="rowElementoImagenLista">
+                 <img  src='/<%= asambleistas[i].imagenLista %>' width='50px' height="60px"> 
+
+           </div>
+
+            <div class="rowElementobtnVotar">
+                <button id='btnVotar'> <img src='/images/vote_icon.png'> </button> 
+            </div>
+            <hr>     <h4>Candidatos:</h4>
+ <ol>
+             <%
+                        for (candi of asambleistas[i].candidatos){%>
+                           
+                            <li> <%= candi %></li> 
+                            
+                        <%
+                        }
+                        %>
+            </ol>
+
+
+            </div>
+	    <% } %>
+   
+    </div>
+</body>
+</html>

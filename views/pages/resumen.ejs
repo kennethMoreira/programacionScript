@@ -6,14 +6,19 @@
 <body>
     <% include ../partials/header %>
     
-    <% include ../partials/encueMenu %>
-    
-    <section id="content">
-        <%= votacion.id %><br>
-        <%= votacion.binomio %> <br>
-        <%= votacion.asambleista %> <br>
-        <%= votacion.parlamentario %> <br>
+  <div class="contenedorResumen">
+     <h2>Cédula:<%= votacion.id %> </h2>
+     
+     <h2>Binomio: <%= votacion.binomio %> </h2>  
+    <h2>Asmbleísta: <%= votacion.asambleista %></h2>
+    <h2> Parlamentario:  <%= votacion.parlamentario %></h2>    
+          <br>
+         
         <%= votacion.mod %> <br>
-    </section>
+     
+  </div>
+    
+   
+       
 </body>
 </html>

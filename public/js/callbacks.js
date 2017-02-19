@@ -170,6 +170,7 @@ $(document).ready(function(){
     });
     
     
+    
     $('#btnEncuestaNueva').on('click', function(){
        var cedula = prompt('Ingrese el número de cédula');
 //        console.log(cedula);
@@ -193,7 +194,7 @@ $(document).ready(function(){
 //            data = JSON.parse(data);
             if (data.saved){
                 alert('Nueva votación creada');
-                window.location.assign('/encue/votos/' + data.id);
+                window.location.assign('/encue/votos/' + data.id+'/binomios');
 
             }else {
                 
