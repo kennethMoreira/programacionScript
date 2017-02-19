@@ -494,7 +494,7 @@ footer{
     border-style: solid;
     border-width: thin;
    height: 600px;
-    width: 200px;
+    width: 160px;
     margin-top: 100px;
     margin-left: 5px;
     margin-right: 5px;
@@ -506,4 +506,35 @@ footer{
 
 .papeleta {
     margin-top: 100px;
+}
+
+.rowElementoPartido {
+    height: 30px;
+}
+
+.rowElementoImagenLista {
+    height: 90px;
+}
+
+.rowElementobtnVotar {
+    height: 25px;
+}
+
+.rowElementoPresidente {
+    height: 180px;
+}
+
+
+
+.NombrePresi {
+    height: 35px;
+}
+
+.imgBinomio {
+       padding:1px;
+    border:1px solid #021a40;
+}
+
+.encuestadorInicio {
+    margin-top: 150px;
 }

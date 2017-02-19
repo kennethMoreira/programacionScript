@@ -11,23 +11,48 @@
    
            <div class="papeleta">
               
-           <h1>Eleccionens Generales 2017</h1>
+           <h1>Eleeciones Generales 2017</h1>
         	<% for (var i = 0; i < binomios.length ; i++){ %>
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-1 binomios"  >
-            <h4>Partido: </h4> <h5><%= binomios[i].partido%></h5> <br>
-            <h4>Lista: </h4><h5><%= binomios[i].lista%></h5>     <br> 
-            
+            <div class="rowElementoPartido">
+                <h5><%= binomios[i].partido%></h5>              
+           </div>
            
-            <img src='/<%= binomios[i].imagenLista %>' width='50px' height="60px"> <br>
+           <div class="rowElementoLista">
+                          <h2><%= binomios[i].lista%></h2>     
             
-            <button class='votar'> <img src='/images/vote_icon.png'> </button> <br><br>
-          
+           </div>
+           <div class="rowElementoImagenLista">
+                 <img  src='/<%= binomios[i].imagenLista %>' width='50px' height="60px"> 
+
+           </div>
+
+            <div class="rowElementobtnVotar">
+                <button class='votar'> <img src='/images/vote_icon.png'> </button> 
+            </div>
+            <hr>
+           
+            <div class="rowElementoPresidente">
+                 <img class="imgBinomio" src='/<%= binomios[i].imagenPresi %>' width='50px' height="60px" > 
+                           <div class="NombrePresi">
+                               <h4> <%= binomios[i].presidente%></h4> 
+                           </div>
+                            
+                            <h4>PRESIDENTE</h4>
+                </div>
+                          <div class="rowElementoVicePresidente">
                            
-                            <img src='/<%= binomios[i].imagenPresi %>' width='50px' height="60px"> <br>
-                            <h4> <%= binomios[i].presidente%></h4> <br>
+                             <img class="imgBinomio" src='/<%= binomios[i].imagenVice %>' width='50px'height="60px"> 
                            
-                             <img src='/<%= binomios[i].imagenVice %>' width='50px'height="60px"> <br>
-                            <h4><%= binomios[i].vicepresidente%> </h4>
+                            <h4><%= binomios[i].vicepresidente%> </h4>      
+                           
+                            
+                            <h4>VICEPRESIDENTE</h4>
+            </div>
+            
+            
+                           
+                          
                             
                         
             
