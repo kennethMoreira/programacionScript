@@ -148,12 +148,6 @@ $(document).ready(function(){
     });
     
     
-//    $('#menuAdminCRUD ul li a').on('click', function(){
-//        var tableName = $(this).data('table-name');
-//        changeContentCRUD(tableName);
-//    });
-    
-    
     $(window).on('resize', function(){
         $('#menuContainer').css('visibility', 'hidden');
         $('#content').css('padding-left', '20px');
@@ -170,11 +164,8 @@ $(document).ready(function(){
     });
     
     
-    
     $('#btnEncuestaNueva').on('click', function(){
        var cedula = prompt('Ingrese el número de cédula');
-//        console.log(cedula);
-        
         
         var url = '/encue/votos/' + cedula;
 	    var datos = {
@@ -183,107 +174,105 @@ $(document).ready(function(){
             type: 'POST',
             datatype: 'json'
         };
-
-//        console.log(datos.data.id)
         
         $.ajax(url, datos)
         .done(function(data, status, xhr){
             //Mostrar la respuesta utilizando DOM y CSS
-            
-            console.log(data)
-//            data = JSON.parse(data);
             if (data.saved){
                 alert('Nueva votación creada');
                 window.location.assign('/encue/votos/' + data.id+'/binomios');
-
             }else {
-                
                 alert("No se creo votación");
             }
         })
         .fail(function(xhr, status, error){
             alert('ERROR DE CONEXIÓN');
         });
-
-        
-        
-        
     });
     
+    sessionStorage.setItem('objDefault', JSON.stringify(saveDefaultData()));
+    sessionStorage.setItem('objEdited', JSON.stringify({}));
+    
+    $('#popUpForm input[type=text], #popUpForm input[type=password]').focusout(function(){
+        var objDefault = JSON.parse(sessionStorage.getItem('objDefault'));
+        var objEdited = buildEditObject(objDefault);
+        
+        sessionStorage.setItem('objEdited', JSON.stringify(objEdited));
+        
+        console.log(objEdited);
+    });
     
 });
 
-//function changeContentCRUD(tabla){
-//    var url = 'admin/' + tabla;
-//	var datos = {
-//		data: null,
-//		type: 'GET',
-//		datatype: 'html'
-//	};
-//    
-//	$.ajax(url, datos)
-//	.done(function(data, status, xhr){
-//		//Mostrar la respuesta utilizando DOM y CSS
-//        $('#content').children().remove();
-//        $('#content').append(data);
-//        addCRUDButtonListeners();
-////        window.location.href=url;
-//	})
-//	.fail(function(xhr, status, error){
-//		alert('ERROR :(');
-//	});
-//}
 
 
-function getForm(tableName){
-    
-    
-    
-    var url = '/admin/'+ tableName + '/insert';
-	var datos = {
-		data: null,
-		type: 'GET',
-		datatype: 'json'
-	};
-    
-	$.ajax(url, datos)
-	.done(function(data, status, xhr){
-		//Mostrar la respuesta utilizando DOM y CSS
-//        $('#popUp').append(data);
-        console.log(data);
-        $('#cancelButton').on('click', function(){
-//            $('#popUpFormContainer h2').text("");
-            $('#popUp').children().remove();
-            $('#popUp').fadeOut();
+function deleteRow(id, tableName){
+    if (confirm("¿Estás seguro?")){
+        var url = '/admin/'+ tableName + '/' + id;
+	    var datos = {
+		    data: null,
+            type: 'DELETE',
+            datatype: 'json'
+        };
+        
+        $.ajax(url, datos)
+        .done(function(data, status, xhr){
+            //Mostrar la respuesta utilizando DOM y CSS
+            if (data.deleted){
+                alert('¡Registro borrado con éxito!');
+                window.location.assign('/admin/' + tableName);
+            }else {
+                alert("ERROR al borrar registro");
+            }
+        })
+        .fail(function(xhr, status, error){
+            alert('ERROR DE CONEXIÓN');
         });
-        
-        
-//        $('#popUp').fadeIn();
-//        $('#popUp').css('display', 'flex');
-        
-	})
-	.fail(function(xhr, status, error){
-		alert('ERROR :(');
-	});
+    }
 }
 
+function saveDefaultData(){
+    //Almacena en variables los valores por defecto
+    var obj = {};
+    $('#popUpForm').find('input[type=text]').each(function() {
+        var key = $(this).attr('name');
+        var value = $(this).val();
+        obj[key] = value;
+    });
+    return obj;
+}
 
+function buildEditObject(objDefault){
+    var obj = {};
+    for (key in objDefault){
+        if ($('input[name='+ key +']').val() != objDefault[key]){
+            obj[key] = $('input[name='+ key +']').val();
+        }else{
+            delete(obj[key]);
+        }
+    }
+    return obj;
+}
 
-function modeAdminOn(){
-//    changeContentCRUD('binomios')
-    
-    
-//    window.location.assign('/admin/asambleistas');
-    
-    
-//    $('#menuAdminCRUD').show();
-//    addCRUDButtonListeners();
-    
-//    window.location = "/binomios";
-    
-//    renderTable(getAll('asambleistas'), 'asambleistas');
-//    activeScreen = $('.CRUDTableTitle:contains("asambleistas")').parent();
-//    activeScreen.fadeIn();
-    
-    
+function updateRow(id, tableName){
+    var url = '/admin/'+ tableName + '/' + id;
+	    var datos = {
+		    data: JSON.parse(sessionStorage.getItem('objEdited')),
+            type: 'PUT',
+            datatype: 'json'
+        };
+        
+        $.ajax(url, datos)
+        .done(function(data, status, xhr){
+            //Mostrar la respuesta utilizando DOM y CSS
+            if (data.edited){
+                alert('¡Registro actualizado con éxito!');
+                window.location.assign('/admin/' + tableName);
+            }else {
+                alert("ERROR al actualizar registro");
+            }
+        })
+        .fail(function(xhr, status, error){
+            alert('ERROR DE CONEXIÓN');
+        });
 }
