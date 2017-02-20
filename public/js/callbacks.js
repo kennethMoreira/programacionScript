@@ -362,7 +362,7 @@ function votarParlamentarios(parlamentario,id){
 
 
 function registraVoto(binomios,asambleistas,parlamentarios,votacion){
-    console.log(binomios)//
+    console.log(binomios)//////
 //        var url = '/encue/votos/'+votacion.id
 //	    var datos = {
 //		     data: {
