@@ -91,23 +91,23 @@ $(document).ready(function(){
     
     toogleUserInfo();
     
-    var loggedUser = {
-        "id": '',
-        "user": "",
-        "pass": "",
-        "name": "",
-        "lastName": "",
-        "userType": "",
-        "photo": ""
-    };
+//    var loggedUser = {
+//        "id": '',
+//        "user": "",
+//        "pass": "",
+//        "name": "",
+//        "lastName": "",
+//        "userType": "",
+//        "photo": ""
+//    };
     
-    if (sessionStorage.getItem("loggedUser")) {
-        loggedUser = JSON.parse(sessionStorage.getItem("loggedUser"))
-    }else if (localStorage.getItem("loggedUser")) {
-        loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-    }
+//    if (sessionStorage.getItem("loggedUser")) {
+//        loggedUser = JSON.parse(sessionStorage.getItem("loggedUser"))
+//    }else if (localStorage.getItem("loggedUser")) {
+//        loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+//    }
     
-    setLoggedUserData(loggedUser);
+//    setLoggedUserData(loggedUser);
     
 //    console.log(userIsLogged);
     
@@ -157,10 +157,10 @@ $(document).ready(function(){
     
     
     $('.logoutBtn').on('click',function (){
-        userIsLogged = false;
-        localStorage.removeItem('loggedUser');
-        sessionStorage.removeItem('loggedUser');
-        window.location.assign('/login');
+//        userIsLogged = false;
+//        localStorage.removeItem('loggedUser');
+//        sessionStorage.removeItem('loggedUser');
+        window.location.assign('/logout');
     });
     
     

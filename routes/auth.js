@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 
+var cookieParser = require('cookie-parser');
+
+//router.use(cookieParser);
 
 router.post('/', function(req, res){
     var user = req.body.user;
@@ -14,9 +17,21 @@ router.post('/', function(req, res){
             for (var u of objJSONFromFile.usuarios ){
                 
                 if (u.user === user && u.pass === pass){
+                    
                     response.found = true;
+                    u.key = generateKey();
                     response.loggedUser = u;
-                    response.loggedUser.key = generateKey();
+                    
+                    fs.writeFile('data/exitpoll.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
+                        if (err){
+                            console.log(err);
+                        }
+                    });  
+                    
+//                    res.cookie('loggedUserId', response.loggedUser.id)
+//                    var path = '/' + u.userType;
+//                    res.clearCookie('loggedUserKey');
+                    res.cookie('loggedUserKey', response.loggedUser.key);
                     break;
                 }
             }
@@ -25,6 +40,7 @@ router.post('/', function(req, res){
 //        }else {
 //            
 //        }
+        
         res.send(JSON.stringify(response));
     });    
 })
