@@ -19,11 +19,14 @@ router.post('/votos/:id',function(req,res){
         "parlamentario": "",
         "mod": "1",
     }
-    fs.writeFile('tmp/' + id + '.json', JSON.stringify(votacion, null, 3)); 
+    fs.writeFile('tmp/' + id + '.json', JSON.stringify(votacion, null, 3), function(err, data){
+        if (err){
+           console.log(err);
+        }
+    }); 
     
     var response = {"saved": true, "id": id}
     console.log(response);
-    
     
     res.send(response);
 });
@@ -68,9 +71,9 @@ router.get('/votos/:id/binomios',function(req,res){
         function (err, texto) {
             var objJSONFromFile = JSON.parse(texto);
             
-    for (var d of objJSONFromFile.elecciones[0].binomios){
-                        listBinomios.push(d);
-                    }
+            for (var d of objJSONFromFile.elecciones[0].binomios){
+                listBinomios.push(d);
+            }
             res.render('pages/binomios', {"binomios":listBinomios,"cedula":cedula});
 
         }
@@ -102,9 +105,9 @@ router.get('/votos/:id/parlamentarios',function(req,res){
         function (err, texto) {
             var objJSONFromFile = JSON.parse(texto);
             
-    for (var d of objJSONFromFile.elecciones[0].parlamentarios){
-                        listParlamentarios.push(d);
-                    }
+            for (var d of objJSONFromFile.elecciones[0].parlamentarios){
+                listParlamentarios.push(d);
+            }
             res.render('pages/parlamentarios', {"parlamentarios":listParlamentarios,"cedula":cedula});
 
         }
