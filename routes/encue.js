@@ -70,13 +70,6 @@ router.get('/votos/:id',function(req,res){
                     for (var d of objJSONFromFile2.elecciones[0].parlamentarios){
                         listParlamentarios.push(d);
                     }
-//<<<<<<< HEAD
-//                  res.render('pages/resumen', {'votacion':objJSONFromFile, "binomios":listBinomios,"asambleistas":listAsambleistas,"parlamentarios":listParlamentarios});
-//
-//      
-//=======
-        
-            
                     var loggedUser = {};
                     for (var u of objJSONFromFile2.usuarios){
                         if ( u.key == req.cookies.loggedUserKey){
@@ -87,7 +80,6 @@ router.get('/votos/:id',function(req,res){
                     }
                 
             res.render('pages/resumen', {'votacion':objJSONFromFile, "binomios":listBinomios,"asambleistas":listAsambleistas,"parlamentarios":listParlamentarios, 'loggedUser':loggedUser});
-//>>>>>>> origin/master
             });
      });
 });
@@ -274,32 +266,63 @@ router.put('/votos/:cedula/parlamentarios/:id', function(req,res){
 
 //                window.location.assign('/encue/votos/' + id+'/binomios/'+binomio+'asambleistas/'+asambleista+'/parlamentarios/'+parlamento);
 
-router.put('/votos/:id/binomios/:idbinomio/asambleistas/:idasambleista/parlamentarios/:idparlamentario', function(req,res){
-    var cedula= req.params.id; 
-    var binomio = req.params.idbinomio;
-    var asambleista= req.params.idasambleista;
-    var parlamentario= req.params.idparlamentario;
+router.put('/votos/:id', function(req,res){
+    var cedula = req.params.id; 
     
-     fs.readFile("data/exitpoll.json", 'utf8',
+//    var binomio = req.params.idbinomio;
+//    var asambleista= req.params.idasambleista;
+//    var parlamentario= req.params.idparlamentario;
+    
+    fs.readFile('tmp/' + cedula + '.json', 'utf8',
         function (err, texto) {
             var objJSONFromFile = JSON.parse(texto);
-            for (var bino of objJSONFromFile.elecciones[0].binomio){
-                if(bino==binomio){
-                    i= indexof(bino);
-                    objJSONFromFile.elecciones[0].binomio[i].voto+=1
+            var votacion = objJSONFromFile;
+        
+            fs.readFile("data/exitpoll.json", 'utf8',
+            function (err, texto) {
+                var objJSONFromFile2 = JSON.parse(texto);
+
+                for (var bino of objJSONFromFile2.elecciones[0].binomios){
+                    if(bino.id === votacion.binomio){
+                        console.log(bino.voto)
+                        bino.voto++;
+    //                    i= indexof(bino);
+    //                    objJSONFromFile.elecciones[0].binomio[i].voto+=1
+                    }
                 }
-            }
+
+                for (var asam of objJSONFromFile2.elecciones[0].asambleistas){
+                    if(asam.id === votacion.asambleista){
+                        asam.votos++;
+                    }
+                }
+
+                for (var parla of objJSONFromFile2.elecciones[0].parlamentarios){
+                    if(parla.id === votacion.parlamentario){
+                        parla.votos++;
+                    }
+                }
+
+
+                fs.writeFile('data/exitpoll.json', JSON.stringify(objJSONFromFile2, null, 3), function(err, data){
+                    if (err){
+                        console.log(err);
+                        res.send({'saved':false});
+                    }else res.send({'saved':true});
+                }); 
             
-     });
-     res.render('pages/asambleistas2', {"asambleistas":listAsambleistas,"cedula":cedula});
+            });
+        
+        
+    });
+    
+    
+    
+    
 
 });
 
 
-
-
-//<<<<<<< HEAD
-//=======
 function isAuthenticated(req, res, next) {
     if (req.cookies.loggedUserKey){
         console.log('COOKIES FOUND');
@@ -327,8 +350,6 @@ function isAuthenticated(req, res, next) {
     }
     console.log('NO HAY COOKIES')
 }
-
-//>>>>>>> origin/master
 
 
 module.exports = router;

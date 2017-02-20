@@ -18,7 +18,7 @@
          "lastName": "León",
          "userType": "encue",
          "photo": "images/users/2.png",
-         "key": "a219fk1u8kvavwuo3xwp14i"
+         "key": "hzaiffq1svw33n1l5fjemi"
       },
       {
          "id": "3",
@@ -45,7 +45,7 @@
                "imagenPresi": "images/candidatos/Paco Moncayo.jpg",
                "vicepresidente": "Monserrat Bustamante",
                "imagenVice": "images/candidatos/Monserrat Bustamante.jpg",
-               "voto": 30,
+               "voto": 31,
                "partido": "Acuerdo Nacional Por El Cambio",
                "imagenLista": "images/listas/2-12-18.png",
                "lista": "2-12-18"
@@ -56,7 +56,7 @@
                "imagenPresi": "images/candidatos/Patricio Zuquilanda.jpg",
                "vicepresidente": "Johnnie Alava",
                "imagenVice": "images/candidatos/Johnnie Alava.jpg",
-               "voto": 40,
+               "voto": 41,
                "partido": "Partido Sociedad Patriótica 21 de Enero",
                "imagenLista": "images/listas/3.png",
                "lista": "3"
@@ -141,7 +141,7 @@
                   "Alban Campos Arturo David",
                   "Jairala Marriott Michelle Andrea"
                ],
-               "votos": 0
+               "votos": 1
             },
             {
                "id": "2",
@@ -155,7 +155,7 @@
                   "Jimenez Paute Nadya Susana",
                   "Coral Tumipamba Carlos Alberto"
                ],
-               "votos": 0
+               "votos": 1
             },
             {
                "id": "3",
@@ -311,7 +311,7 @@
                   "Vera Sanchez Yaritza Dallana",
                   "Guaranda Sanchez Arsenio Silverio"
                ],
-               "votos": 0
+               "votos": 1
             },
             {
                "id": "2",
@@ -325,7 +325,7 @@
                   "Samaniego Salazar Carmen Luisa",
                   "Aviles Jaramillo Christian Alfonso"
                ],
-               "votos": 0
+               "votos": 1
             },
             {
                "id": "3",

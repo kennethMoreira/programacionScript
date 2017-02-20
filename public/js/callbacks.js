@@ -336,10 +336,11 @@ function registraVoto(id, binomio, asambleista, parlamento){
       var url = '/encue/votos/'+id;
 	    var datos = {
 		     data: {
-                'id':id,
-                 'binomio':binomio,
-                 'asambleista':asambleista,
-                 'parlamento':parlamento
+                'id':id
+//                 ,
+//                 'binomio':binomio,
+//                 'asambleista':asambleista,
+//                 'parlamento':parlamento
                 },
             type: 'PUT',
             datatype: 'json'
@@ -349,13 +350,13 @@ function registraVoto(id, binomio, asambleista, parlamento){
         $.ajax(url, datos)
         .done(function(data, status, xhr){
             //Mostrar la respuesta utilizando DOM y CSS
-            if (data.edited){
+            if (data.saved){
                 console.log(data);
                 alert('éxito!');
                 
-                window.location.assign('/encue/votos/' + id+'/binomios/'+binomio+'asambleistas/'+asambleista+'/parlamentarios/'+parlamento);
+                window.location.assign('/encue');
             }else {
-                alert("No se creo votación");
+                alert("No se guardó la votación");
             }
         })
         .fail(function(xhr, status, error){
