@@ -1,27 +1,31 @@
 {
    "usuarios": [
       {
-         "id": 1,
+         "id": "1",
          "user": "admin1",
          "pass": "1234",
          "name": "Fernando",
          "lastName": "Balladares",
          "userType": "admin",
          "photo": "images/users/1.png",
-         "key": ""
+         "key": "7hv28eoql151svn8h93sor"
       },
       {
-         "id": 2,
+         "id": "2",
          "user": "encue1",
          "pass": "1234",
          "name": "Carlos",
          "lastName": "León",
          "userType": "encue",
          "photo": "images/users/2.png",
+<<<<<<< HEAD
          "key": "set63sixmk4rzq7fa8aor"
+=======
+         "key": "69x3i25kkdyaautagojemi"
+>>>>>>> origin/master
       },
       {
-         "id": 3,
+         "id": "3",
          "user": "encue2",
          "pass": "1234",
          "name": "Kenneth",
