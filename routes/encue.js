@@ -171,7 +171,13 @@ router.put('/votos/:cedula/asambleistas/:id', function(req,res){
         
         objJSONFromFile.asambleista=id;
         
-        fs.writeFile('tmp/' + cedula + '.json', JSON.stringify(objJSONFromFile, null, 3)); 
+        fs.writeFile('tmp/' + cedula + '.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
+                if (err){
+                    console.log(err);
+                    res.send({edited:false});
+                }else res.send({edited:true});
+        });
+         
         
         
     });

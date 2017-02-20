@@ -286,7 +286,7 @@ function votarAsambleista(asambleista,id){
         $.ajax(url, datos)
         .done(function(data, status, xhr){
             //Mostrar la respuesta utilizando DOM y CSS
-            if (data.saved){
+            if (data.edited){
                 alert('éxito!');
                 window.location.assign('/encue/votos/' + data.id+'/parlamentarios');
             }else {
@@ -314,7 +314,7 @@ function votarParlamentarios(parlamentario,id){
         $.ajax(url, datos)
         .done(function(data, status, xhr){
             //Mostrar la respuesta utilizando DOM y CSS
-            if (data.saved){
+            if (data.edited){
                 alert('éxito!');
                 window.location.assign('/encue/votos/' + data.id);
             }else {
