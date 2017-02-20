@@ -4,7 +4,22 @@ var fs = require('fs');
 
 
 router.get('/',function(req,res){
-    res.render('pages/encue');
+    
+    
+    fs.readFile("data/exitpoll.json", 'utf8',
+        function (err, texto) {
+            var objJSONFromFile = JSON.parse(texto);
+    
+            var loggedUser = {};
+            for (var u of objJSONFromFile.usuarios){
+                if ( u.key == req.cookies.loggedUserKey){
+                    loggedUser.photo = u.photo;
+                    loggedUser.name = u.name;
+                    loggedUser.userType = u.userType;
+                }
+            }   
+            res.render('pages/encue', {'loggedUser':loggedUser});
+    });
 });
 
 
@@ -57,7 +72,16 @@ router.get('/votos/:id',function(req,res){
                         listParlamentarios.push(d);
                     }
         
-        res.render('pages/resumen', {'votacion':objJSONFromFile, "binomios":listBinomios,"asambleistas":listAsambleistas,"parlamentarios":listParlamentarios});
+        
+            var loggedUser = {};
+            for (var u of objJSONFromFile.usuarios){
+                if ( u.key == req.cookies.loggedUserKey){
+                    loggedUser.photo = u.photo;
+                    loggedUser.name = u.name;
+                    loggedUser.userType = u.userType;
+                }
+            }    
+            res.render('pages/resumen', {'votacion':objJSONFromFile, "binomios":listBinomios,"asambleistas":listAsambleistas,"parlamentarios":listParlamentarios, 'loggedUser':loggedUser});
     });
      })
 });
@@ -74,7 +98,17 @@ router.get('/votos/:id/binomios',function(req,res){
             for (var d of objJSONFromFile.elecciones[0].binomios){
                 listBinomios.push(d);
             }
-            res.render('pages/binomios', {"binomios":listBinomios,"cedula":cedula});
+            
+           
+           var loggedUser = {};
+            for (var u of objJSONFromFile.usuarios){
+                if ( u.key == req.cookies.loggedUserKey){
+                    loggedUser.photo = u.photo;
+                    loggedUser.name = u.name;
+                    loggedUser.userType = u.userType;
+                }
+            }
+           res.render('pages/binomios', {"binomios":listBinomios,"cedula":cedula, 'loggedUser':loggedUser});
 
         }
     );
@@ -91,7 +125,18 @@ router.get('/votos/:id/asambleistas',function(req,res){
     for (var d of objJSONFromFile.elecciones[0].asambleistas){
                         listAsambleistas.push(d);
                     }
-            res.render('pages/asambleistas2', {"asambleistas":listAsambleistas,"cedula":cedula});
+           
+           
+           var loggedUser = {};
+            for (var u of objJSONFromFile.usuarios){
+                if ( u.key == req.cookies.loggedUserKey){
+                    loggedUser.photo = u.photo;
+                    loggedUser.name = u.name;
+                    loggedUser.userType = u.userType;
+                }
+            }
+           
+           res.render('pages/asambleistas2', {"asambleistas":listAsambleistas,"cedula":cedula, 'loggedUser':loggedUser});
 
         }
     );
@@ -108,7 +153,18 @@ router.get('/votos/:id/parlamentarios',function(req,res){
             for (var d of objJSONFromFile.elecciones[0].parlamentarios){
                 listParlamentarios.push(d);
             }
-            res.render('pages/parlamentarios', {"parlamentarios":listParlamentarios,"cedula":cedula});
+            
+           
+           
+           var loggedUser = {};
+            for (var u of objJSONFromFile.usuarios){
+                if ( u.key == req.cookies.loggedUserKey){
+                    loggedUser.photo = u.photo;
+                    loggedUser.name = u.name;
+                    loggedUser.userType = u.userType;
+                }
+            }
+           res.render('pages/parlamentarios', {"parlamentarios":listParlamentarios,"cedula":cedula, 'loggedUser':loggedUser});
 
         }
     );
@@ -220,6 +276,36 @@ router.put('/votos/:cedula/registrado/binomios/:binomioid/asambleistas/:asamblei
     
 });
 
+
+
+
+function isAuthenticated(req, res, next) {
+    if (req.cookies.loggedUserKey){
+        console.log('COOKIES FOUND');
+        var loggedUserKey = req.cookies.loggedUserKey;
+        
+        fs.readFile("data/exitpoll.json", 'utf8',
+            function (err, texto) {
+                var objJSONFromFile = JSON.parse(texto);
+                
+                for (var user of objJSONFromFile.usuarios){
+                    if (user.key === loggedUserKey){
+                        //El usuario está logeado
+                        //Se lo redirige a /admin o /encue dependiendo de que tipo de usuario es
+                        console.log('EL USUARIO YA ESTABA LOGEADO');
+                        return next();
+                    }else {
+                        //El id y key encontrados en las cookies no coinciden con un usuario del JSON
+                        //Se lo redirige a /login
+                        console.log('COOKIES ENCONTRADAS INCORRECTAS');
+                    }
+                }
+            }
+        );
+    
+    }
+    console.log('NO HAY COOKIES')
+}
 
 
 
