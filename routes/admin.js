@@ -44,7 +44,6 @@ router.get('/:tablename', isAuthenticated, function(req, res){
             }
             var loggedUser = {};
             for (var u of objJSONFromFile.usuarios){
-                console.log(u)
                 if ( u.key == req.cookies.loggedUserKey){
                     loggedUser.photo = u.photo;
                     loggedUser.name = u.name;
@@ -134,7 +133,7 @@ router.post('/:tablename/:id', function(req, res){
                     break;
                 default:
             }
-            fs.writeFile('data/exitpoll_prueba.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
+            fs.writeFile('data/exitpoll.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
                 if (err){
                     console.log(err);
                 }
@@ -170,7 +169,7 @@ router.delete('/:tablename/:id', function(req, res){
                     break;
                 default:
             }
-            fs.writeFile('data/exitpoll_prueba.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
+            fs.writeFile('data/exitpoll.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
                 if (err){
                     console.log(err);
                     res.send({deleted:false});
@@ -217,7 +216,7 @@ router.put('/:tablename/:id', function(req, res){
                     objAux[key] = objEdited[key];
                 }
             }
-            fs.writeFile('data/exitpoll_prueba.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
+            fs.writeFile('data/exitpoll.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
                 if (err){
                     console.log(err);
                     res.send({edited:false});
@@ -238,12 +237,10 @@ function isAuthenticated(req, res, next) {
                 var objJSONFromFile = JSON.parse(texto);
                 
                 for (var user of objJSONFromFile.usuarios){
-//                    console.log('loggedUserKey: ' +loggedUserKey)
                     if (user.key === loggedUserKey){
                         //El usuario está logeado
                         //Se lo redirige a /admin o /encue dependiendo de que tipo de usuario es
                         console.log('EL USUARIO YA ESTABA LOGEADO');
-//                        res.render('pages/' + user.userType);
                         return next();
                     }else {
                         //El id y key encontrados en las cookies no coinciden con un usuario del JSON

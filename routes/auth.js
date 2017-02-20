@@ -2,10 +2,6 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 
-var cookieParser = require('cookie-parser');
-
-//router.use(cookieParser);
-
 router.post('/', function(req, res){
     var user = req.body.user;
     var pass = req.body.pass;
@@ -27,20 +23,10 @@ router.post('/', function(req, res){
                             console.log(err);
                         }
                     });  
-                    
-//                    res.cookie('loggedUserId', response.loggedUser.id)
-//                    var path = '/' + u.userType;
-//                    res.clearCookie('loggedUserKey');
                     res.cookie('loggedUserKey', response.loggedUser.key);
                     break;
                 }
             }
-//        if (response.found){
-//                res.render('pages/'+loggedUser.userType, loggedUser)
-//        }else {
-//            
-//        }
-        
         res.send(JSON.stringify(response));
     });    
 })

@@ -21,7 +21,6 @@ function login(user, pass, autolog){
 		data = JSON.parse(data);
 
 		if (data.found){
-            found = true;
 //            if (autolog === false){
 //                if($('#checkLogin').prop('checked')) {
 //                    localStorage.setItem('loggedUser', JSON.stringify(data.loggedUser));
@@ -29,24 +28,10 @@ function login(user, pass, autolog){
 //                sessionStorage.setItem('loggedUser', JSON.stringify(data.loggedUser));
 //                alert("Bienvenido " + data.loggedUser.name);
 //            }
-
-//            userIsLogged = true;
-            
-//            if (userIsLogged === true){
                 
             alert("Bienvenido " + data.loggedUser.name);
             
             window.location.assign('/' + data.loggedUser.userType);
-//            }
-            
-//            toogleUserInfo();
-//            menuMaxHeight();
-
-//            $('.loggedUserPicture').attr('src', '/' + data.loggedUser.photo);
-//            $('.loggedUserName').text(data.loggedUser.name);
-//            $('input').val('');
-//            $('#loginFormContainer').hide();
-//            $('.loggedUserType').text(data.loggedUser.userType);
             
         }else {
             found = false;
@@ -61,7 +46,6 @@ function login(user, pass, autolog){
 }
 
 function toogleUserInfo(){
-//    if (userIsLogged){
         if ($(window).width() > mobileMaxWith){
             $('#loggedUser').show();
             $('#loggedUser-menu').hide();
@@ -71,7 +55,6 @@ function toogleUserInfo(){
             $('#loggedUser-menu').show();
             $('#menuLogoutBtn').show();
         }
-//    }
 }
 
 function menuMaxHeight(){
@@ -81,35 +64,23 @@ function menuMaxHeight(){
 
 
 function setLoggedUserData(loggedUser){
-    $('.loggedUserPicture').attr('src', '/' + loggedUser.photo);
-    $('.loggedUserName').text(loggedUser.name);
-    $('.loggedUserType').text(loggedUser.userType);
+    $('.loggedUserPicture').attr('src', $('#loggedUser img').attr('src'));
+    $('.loggedUserName').text($('#loggedUser label').text());
+//    $('.loggedUserType').text(loggedUser.userType);
 }
 
 
 $(document).ready(function(){
     
     toogleUserInfo();
+//    setLoggedUserData();
     
-//    var loggedUser = {
-//        "id": '',
-//        "user": "",
-//        "pass": "",
-//        "name": "",
-//        "lastName": "",
-//        "userType": "",
-//        "photo": ""
-//    };
     
 //    if (sessionStorage.getItem("loggedUser")) {
 //        loggedUser = JSON.parse(sessionStorage.getItem("loggedUser"))
 //    }else if (localStorage.getItem("loggedUser")) {
 //        loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
 //    }
-    
-//    setLoggedUserData(loggedUser);
-    
-//    console.log(userIsLogged);
     
 //    if (userIsLogged === false){
 //        if (localStorage.getItem("loggedUser") || sessionStorage.getItem("loggedUser")) {
@@ -157,9 +128,6 @@ $(document).ready(function(){
     
     
     $('.logoutBtn').on('click',function (){
-//        userIsLogged = false;
-//        localStorage.removeItem('loggedUser');
-//        sessionStorage.removeItem('loggedUser');
         window.location.assign('/logout');
     });
     

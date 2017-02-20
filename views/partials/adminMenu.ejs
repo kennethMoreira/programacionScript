@@ -1,8 +1,8 @@
 <div id='menuContainer'>
         <div id='loggedUser-menu'>
-            <img class='loggedUserPicture'>
-            <label class="loggedUserName"></label>
-            <label class="loggedUserType"></label>
+            <img class='loggedUserPicture' src='/<%= loggedUser.photo %>'>
+            <label class="loggedUserName"><%= loggedUser.name %></label>
+            <label class="loggedUserType"><%= loggedUser.userType %></label>
         </div>
         
         <nav id='menuAdminCRUD' class='userMenu'>
@@ -16,6 +16,7 @@
             </ul>
         </nav>
         
+<!--
         <nav id = 'menuGraficos' class ='userMenu'>
         <ul>
             <li>
@@ -29,6 +30,7 @@
             </li>
         </ul>
         </nav>
+-->
         
         <button id='menuLogoutBtn' class="form-button logoutBtn">Salir</button>
         <footer>
