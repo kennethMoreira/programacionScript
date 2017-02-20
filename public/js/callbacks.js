@@ -364,6 +364,3 @@ function registraVoto(id, binomio, asambleista, parlamento){
     
 }
     
-   
-    
-}
