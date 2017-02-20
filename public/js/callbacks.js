@@ -276,3 +276,36 @@ function updateRow(id, tableName){
             alert('ERROR DE CONEXIÓN');
         });
 }
+//Registrar Votos Binomios
+
+function votoBinomio(binomio,cedula){
+  console.log(binomio);
+       console.log(cedula);
+
+    var url = '/encue/votos/'+cedula+'/binomios/'+ binomio;
+	    var datos = {
+		    data: {"cedula":cedula,
+                  "binomio":binomio} ,
+            type: 'PUT',
+            datatype: 'json'
+        };
+        
+        $.ajax(url, datos)
+        .done(function(data, status, xhr){
+            //Mostrar la respuesta utilizando DOM y CSS
+                alert('¡Voto exitoso!');
+                window.location.assign('/encue/votos/'+cedula+'/asambleistas2/');
+            
+        })
+        .fail(function(xhr, status, error){
+            alert('ERROR DE CONEXIÓN');
+        });
+       
+          
+}
+
+function votoAsambleistas (asambleistas, cedula){
+    console.log(asambleistas);
+    console.log(cedula);
+}
+
