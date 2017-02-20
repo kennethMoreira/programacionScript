@@ -56,8 +56,9 @@ router.get('/votos/:id',function(req,res){
         for (var d of objJSONFromFile2.elecciones[0].parlamentarios){
                         listParlamentarios.push(d);
                     }
-        
-        res.render('pages/resumen', {'votacion':objJSONFromFile, "binomios":listBinomios,"asambleistas":listAsambleistas,"parlamentarios":listParlamentarios});
+                  res.render('pages/resumen', {'votacion':objJSONFromFile, "binomios":listBinomios,"asambleistas":listAsambleistas,"parlamentarios":listParlamentarios});
+
+      
     });
      })
 });
@@ -197,7 +198,12 @@ router.put('/votos/:cedula/parlamentarios/:id', function(req,res){
         
         objJSONFromFile.parlamentario=id;
         
-        fs.writeFile('tmp/' + cedula + '.json', JSON.stringify(objJSONFromFile, null, 3)); 
+        fs.writeFile('tmp/' + cedula + '.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
+                if (err){
+                    console.log(err);
+                    res.send({edited:false});
+                }else res.send({edited:true});
+        }); 
         
         
     });
