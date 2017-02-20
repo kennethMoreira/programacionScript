@@ -1,35 +1,27 @@
 {
    "usuarios": [
       {
-         "id": 1,
+         "id": "1",
          "user": "admin1",
          "pass": "1234",
          "name": "Fernando",
          "lastName": "Balladares",
          "userType": "admin",
          "photo": "images/users/1.png",
-         "key": "0hr7hiweyj1x75faa960f6r"
+         "key": ""
       },
       {
-         "id": 2,
+         "id": "2",
          "user": "encue1",
          "pass": "1234",
          "name": "Carlos",
          "lastName": "León",
          "userType": "encue",
          "photo": "images/users/2.png",
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-         "key": "n42uqvr64svgmrefcac3di"
-=======
          "key": "9u5m3iy6j3nylsht49529"
->>>>>>> origin/master
-=======
-         "key": "b3v16vh4b2un1bxuvj9k9"
->>>>>>> Stashed changes
       },
       {
-         "id": 3,
+         "id": "3",
          "user": "encue2",
          "pass": "1234",
          "name": "Kenneth",
