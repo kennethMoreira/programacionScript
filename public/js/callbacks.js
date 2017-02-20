@@ -259,9 +259,9 @@ function votarBinomio(binomio,id){
         $.ajax(url, datos)
         .done(function(data, status, xhr){
             //Mostrar la respuesta utilizando DOM y CSS
-            if (data.saved){
+            if (data.edited){
                 alert('éxito!');
-                window.location.assign('/encue/votos/' + data.id+'/asambleistas');
+                window.location.assign('/encue/votos/' + id+'/asambleistas');
             }else {
                 alert("No se creo votación");
             }

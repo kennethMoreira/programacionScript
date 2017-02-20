@@ -1,27 +1,27 @@
 {
    "usuarios": [
       {
-         "id": "1",
+         "id": 1,
          "user": "admin1",
          "pass": "1234",
          "name": "Fernando",
          "lastName": "Balladares",
          "userType": "admin",
          "photo": "images/users/1.png",
-         "key": "y5wwgxxkxqvb7rs7d86w29"
+         "key": ""
       },
       {
-         "id": "2",
+         "id": 2,
          "user": "encue1",
          "pass": "1234",
          "name": "Carlos",
          "lastName": "León",
          "userType": "encue",
          "photo": "images/users/2.png",
-         "key": "k9oaz0vrtp62upsxzgp66r"
+         "key": "n42uqvr64svgmrefcac3di"
       },
       {
-         "id": "3",
+         "id": 3,
          "user": "encue2",
          "pass": "1234",
          "name": "Kenneth",
@@ -397,21 +397,12 @@
                ],
                "votos": 0
             },
-<<<<<<< HEAD
-            {  
-               "id":"8",
-               "partido":"Acuerdo Por El Cambio",
-               "lista":"12-2-18",
-               "imagenLista":"images/listas/12-2-18.jpg",
-               "candidatos":[  
-=======
             {
                "id": "8",
                "partido": "Acuerdo Por El Cambio",
                "lista": "12-2-18",
                "imagenLista": "images/listas/12-2-18.hpg",
                "candidatos": [
->>>>>>> origin/master
                   "Tiban Guala Lourdes Licenia",
                   "Polanco Reyes Diego Lenin",
                   "Rassa Parra Ingrid Pilar",

@@ -43,10 +43,6 @@ router.get('/votos/:id',function(req,res){
         function (err, texto) {
             var objJSONFromFile2 = JSON.parse(texto);
             
-    for (var d of objJSONFromFile2.elecciones[0].binomios){
-                        listBinomios.push(d);
-                    }
-            
            
          for (var d of objJSONFromFile2.elecciones[0].binomios){
                         listBinomios.push(d);
@@ -147,7 +143,12 @@ router.put('/votos/:cedula/binomios/:idBinomio', function(req,res){
         
         objJSONFromFile.binomio=binomio;
         
-        fs.writeFile('tmp/' + cedula + '.json', JSON.stringify(objJSONFromFile, null, 3)); 
+        fs.writeFile('tmp/' + cedula + '.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
+                if (err){
+                    console.log(err);
+                    res.send({edited:false});
+                }else res.send({edited:true});
+        }); 
         
         
     });

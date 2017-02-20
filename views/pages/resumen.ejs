@@ -9,20 +9,13 @@
   <div class="contenedorResumen">
      <h2>Cédula:<%= votacion.id %> </h2>
      
-<!--
-     <% for (var i = 0; i < binomios.length ; i++){
-      if(binomios[i].id==votacion.binomio){ %>
+
+     <% for (var i = 0; i < binomios.length ; i++){ %>
+      <% if(binomios[i].id==votacion.binomio){ %>
           <h2>Binomio: <%= binomios[i].partido %> </h2> 
-      <%}%>
+      <% } %>
       
-      <%}%>
--->
-     <% for (var i = 0; i < binomios.length ; i++){
-      if(binomios[i].id==votacion.binomio){ %>
-          <h2>Binomios: <%= binomios[i].partido %> </h2> 
-      <%}%>
-      
-      <%}%>
+      <% } %>
        
         <% for (var i = 0; i < asambleistas.length ; i++){
       if(asambleistas[i].id==votacion.asambleista){ %>
