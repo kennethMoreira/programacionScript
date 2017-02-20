@@ -276,3 +276,118 @@ function updateRow(id, tableName){
             alert('ERROR DE CONEXIÓN');
         });
 }
+function votarBinomio(binomio,id){
+    
+       var url = '/encue/votos/'+id+ '/binomios/'+binomio;
+	    var datos = {
+		     data: {
+                'id':id,
+                'idBinomio':binomio},
+            type: 'PUT',
+            datatype: 'json'
+        };
+        
+    
+        $.ajax(url, datos)
+        .done(function(data, status, xhr){
+            //Mostrar la respuesta utilizando DOM y CSS
+            if (data.saved){
+                alert('éxito!');
+                window.location.assign('/encue/votos/' + data.id+'/asambleistas');
+            }else {
+                alert("No se creo votación");
+            }
+        })
+        .fail(function(xhr, status, error){
+            alert('ERROR DE CONEXIÓNnn');
+        });
+    
+}
+function votarAsambleista(asambleista,id){
+    
+       var url = '/encue/votos/'+id+ '/asambleistas/'+asambleista;
+	    var datos = {
+		     data: {
+                'id':id,
+                'asambleista':asambleista},
+            type: 'PUT',
+            datatype: 'json'
+        };
+        
+    
+        $.ajax(url, datos)
+        .done(function(data, status, xhr){
+            //Mostrar la respuesta utilizando DOM y CSS
+            if (data.saved){
+                alert('éxito!');
+                window.location.assign('/encue/votos/' + data.id+'/parlamentarios');
+            }else {
+                alert("No se creo votación");
+            }
+        })
+        .fail(function(xhr, status, error){
+            alert('ERROR DE CONEXIÓNnn');
+        });
+    
+}
+
+function votarParlamentarios(parlamentario,id){
+    
+       var url = '/encue/votos/'+id+ '/parlamentarios/'+parlamentario;
+	    var datos = {
+		     data: {
+                'id':id,
+                'parlamentario':parlamentario},
+            type: 'PUT',
+            datatype: 'json'
+        };
+        
+    
+        $.ajax(url, datos)
+        .done(function(data, status, xhr){
+            //Mostrar la respuesta utilizando DOM y CSS
+            if (data.saved){
+                alert('éxito!');
+                window.location.assign('/encue/votos/' + data.id);
+            }else {
+                alert("No se creo votación");
+            }
+        })
+        .fail(function(xhr, status, error){
+            alert('ERROR DE CONEXIÓNnn');
+        });
+    
+}
+
+
+
+function registraVoto(binomios,asambleistas,parlamentarios,votacion){
+    console.log(binomios)
+//        var url = '/encue/votos/'+votacion.id
+//	    var datos = {
+//		     data: {
+//                'binomios':binomios,
+//                'asambleistas':asambleistas,
+//                'parlamentarios':parlamentarios,
+//                 'votacion':votacion
+//             },
+//            type: 'PUT',
+//            datatype: 'json'
+//        };
+//        
+//    
+//        $.ajax(url, datos)
+//        .done(function(data, status, xhr){
+//            //Mostrar la respuesta utilizando DOM y CSS
+//            if (data.saved){
+//                alert('Almacenado con éxito!');
+//                window.location.assign('/encue/votos/' + votacion.id+'/registrado/binomios/'+binomios.id+'/asambleistas/'+asambleistas.id+'/parlamentarios/'+parlamentarios.id+'/');
+//            }else {
+//                alert("No se creo votación");
+//            }
+//        })
+//        .fail(function(xhr, status, error){
+//            alert('ERROR DE CONEXIÓNnn');
+//        });
+    
+}
