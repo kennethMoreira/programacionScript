@@ -288,7 +288,7 @@ function votarAsambleista(asambleista,id){
             //Mostrar la respuesta utilizando DOM y CSS
             if (data.edited){
                 alert('éxito!');
-                window.location.assign('/encue/votos/' + data.id+'/parlamentarios');
+                window.location.assign('/encue/votos/' + id+'/parlamentarios');
             }else {
                 alert("No se creo votación");
             }
@@ -316,7 +316,7 @@ function votarParlamentarios(parlamentario,id){
             //Mostrar la respuesta utilizando DOM y CSS
             if (data.edited){
                 alert('éxito!');
-                window.location.assign('/encue/votos/' + data.id);
+                window.location.assign('/encue/votos/' + id);
             }else {
                 alert("No se creo votación");
             }
