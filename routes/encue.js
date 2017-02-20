@@ -27,20 +27,6 @@ router.post('/votos/:id',function(req,res){
     res.send(response);
 });
 
-router.post('/votos/:id/binomios/:idBinomio', function(req,res){
-    var objJSONFromFile;
-    var id=req.params.id;
-    fs.readFile('tmp/' + id + '.json', 'utf8',
-        function (err, texto) {
-        objJSONFromFile = JSON.parse(texto);
-        });
-    objJSONFromFile.binomio=req.params.idBinomio;
-    fs.writeFile('tmp/' + id + '.json', JSON.stringify(objJSONFromFile, null, 3));
-    
-    console.log(objJSONFromFile)
-    
-});
-
 
 router.get('/votos/:id',function(req,res){
     var id = req.params.id;
@@ -56,8 +42,7 @@ router.get('/votos/:id',function(req,res){
 
 
 router.get('/votos/:id/binomios',function(req,res){
-   var cedula = req.params.id;
-   
+    
     var listBinomios = [];
        fs.readFile("data/exitpoll.json", 'utf8',
         function (err, texto) {
@@ -65,18 +50,15 @@ router.get('/votos/:id/binomios',function(req,res){
             
     for (var d of objJSONFromFile.elecciones[0].binomios){
                         listBinomios.push(d);
-                        
                     }
-         
-            res.render('pages/binomios', {"binomios":listBinomios,"cedula":cedula});
-  
+            res.render('pages/binomios', {"binomios":listBinomios});
+
         }
     );
     
 });
 
-router.get('/votos/:id/asambleistas2',function(req,res){
-   var cedula = req.parms.id;
+router.get('/votos/:id/asambleistas',function(req,res){
     
     var listAsambleistas = [];
        fs.readFile("data/exitpoll.json", 'utf8',
@@ -129,35 +111,6 @@ router.get('/asambleistas', function(req, res){
         }
     );
 });
-
-
-
-router.put('/votos/:id/binomios/:idBinomio', function(req, res){
-    var id = req.params.id;
-    var idBinomio = req.params.idBinomio;
-    
-    var objEdited = req.body;
-    console.log("PILAAAA")
-      var response = {}
-    
-    fs.readFile('tmp/'+id+'.json', 'utf8',
-        function (err, texto) {
-            var objJSONFromFile = JSON.parse(texto);
-            
-            objJSONFromFile.binomio=idBinomio;
-        
-          
-            fs.writeFile('tmp/'+id+'.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
-                if (err){
-                    console.log(err);
-                    res.send({edited:false});
-                }else res.send({edited:true});
-            });  
-//            res.redirect('/admin/'+ tableName)
-        }
-    );
-});
-
 
 
 module.exports = router;
