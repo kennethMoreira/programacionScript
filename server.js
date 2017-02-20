@@ -1,15 +1,16 @@
 var express = require('express');
-var app = express();
 var fs = require('fs');
 var bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+var cookieParser = require('cookie-parser');
 
-app.use(express.static(__dirname +'/public'));
+var app = express();
+
 app.set('view engine', 'ejs');
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cookieParser());
 app.use('/', require('./routes'));
-
+app.use(express.static(__dirname +'/public'));
 
 
 //app.get('/user/:id', function (req, res) {

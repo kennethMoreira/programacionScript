@@ -29,76 +29,6 @@
          "userType": "encue",
          "photo": "images/users/3.png",
          "key": ""
-      },
-      {
-         "id": "4",
-         "user": "guasho",
-         "pass": "1234",
-         "name": "Washington",
-         "lastName": "Vera",
-         "userType": "e",
-         "photo": "images/jjs.jpg",
-         "key": ""
-      },
-      {
-         "id": "5",
-         "user": "pedd",
-         "pass": "asas",
-         "name": "fqef2",
-         "lastName": "eeeec",
-         "userType": "wwecec",
-         "photo": "ewwe",
-         "key": "cewc"
-      },
-      {
-         "id": "6",
-         "user": "ef",
-         "pass": "ef",
-         "name": "qwsdc",
-         "lastName": "eqf",
-         "userType": "wev",
-         "photo": "wev",
-         "key": ""
-      },
-      {
-         "id": "7",
-         "user": "547",
-         "pass": "heh",
-         "name": "rewhwe",
-         "lastName": "q3t",
-         "userType": "wegw",
-         "photo": "hwheweh",
-         "key": ""
-      },
-      {
-         "id": "8",
-         "user": "wef",
-         "pass": "22",
-         "name": "vef",
-         "lastName": "vwv",
-         "userType": "qef",
-         "photo": "qefw",
-         "key": ""
-      },
-      {
-         "id": "9",
-         "user": "frhghn",
-         "pass": "erner",
-         "name": "webn",
-         "lastName": "wevqv",
-         "userType": "vqvqvqqqq",
-         "photo": "q",
-         "key": ""
-      },
-      {
-         "id": "10",
-         "user": "eqwfwef",
-         "pass": "435243",
-         "name": "g",
-         "lastName": "wegwqeg",
-         "userType": "gq2geg",
-         "photo": "w",
-         "key": ""
       }
    ],
    "elecciones": [
@@ -196,28 +126,6 @@
                "partido": "Movimiento Alianza PAIS",
                "imagenLista": "images/listas/35.png",
                "lista": "35"
-            },
-            {
-               "id": "8",
-               "presidente": "",
-               "imagenPresi": "",
-               "vicepresidente": "",
-               "imagenVice": "",
-               "voto": "",
-               "partido": "",
-               "imagenLista": "",
-               "lista": ""
-            },
-            {
-               "id": "10",
-               "presidente": "",
-               "imagenPresi": "",
-               "vicepresidente": "",
-               "imagenVice": "",
-               "voto": "",
-               "partido": "",
-               "imagenLista": "",
-               "lista": ""
             }
          ],
          "asambleistas": [

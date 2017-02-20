@@ -5,7 +5,6 @@
 </head>
 <body>
     <% include ../partials/header %>
-    <% include ../partials/adminMenu %>
     <section id="content">   
        
         <div id='popUp'>
@@ -36,7 +35,7 @@
                             <input id='saveButton' class='form-button' type='button' value='Actualizar' onclick='updateRow("<%= obj.id %>", "<%= tableName %>")'>
                     <% } %>
                    
-                    <input id='cancelButton' class='form-button' value='Cancelar' onclick='window.location.assign("/admin/<%= tableName %>")'>
+                    <input id='cancelButton' class='form-button' type="button" value='Cancelar' onclick='window.location.assign("/admin/<%= tableName %>")'>
                 </form>
             </div>
 

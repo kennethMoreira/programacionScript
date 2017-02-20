@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 
-
 router.post('/', function(req, res){
     var user = req.body.user;
     var pass = req.body.pass;
@@ -14,17 +13,20 @@ router.post('/', function(req, res){
             for (var u of objJSONFromFile.usuarios ){
                 
                 if (u.user === user && u.pass === pass){
+                    
                     response.found = true;
+                    u.key = generateKey();
                     response.loggedUser = u;
-                    response.loggedUser.key = generateKey();
+                    
+                    fs.writeFile('data/exitpoll.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
+                        if (err){
+                            console.log(err);
+                        }
+                    });  
+                    res.cookie('loggedUserKey', response.loggedUser.key);
                     break;
                 }
             }
-//        if (response.found){
-//                res.render('pages/'+loggedUser.userType, loggedUser)
-//        }else {
-//            
-//        }
         res.send(JSON.stringify(response));
     });    
 })

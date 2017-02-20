@@ -2,21 +2,21 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 
+
 // GET -> http:/localhost:8081/admin/
 
 router.get('/', function(req, res){
-    var key = req.params.key;
-    console.log(key)
-    res.render('pages/admin', {'logged':true});
+    res.redirect('/admin/binomios');
 });
 
 // GET -> http:/localhost:8081/admin/tabla  (Se solicita la lista de *)
 
-router.get('/:tablename', function(req, res){
+router.get('/:tablename', isAuthenticated, function(req, res){
     var tableName = req.params.tablename;
     var arr = [];
 
-    fs.readFile("data/exitpoll_prueba.json", 'utf8',
+    
+    fs.readFile("data/exitpoll.json", 'utf8',
         function (err, texto) {
             var objJSONFromFile = JSON.parse(texto);
             switch (tableName){
@@ -42,10 +42,15 @@ router.get('/:tablename', function(req, res){
                 default:
                     
             }
-            res.render('pages/CRUDTable', {"tableName":tableName, "array":arr, 'logged':true});
-//            res.render('CRUDTable', {"tableName":tableName, "array":arr}, function(err, html){
-//                res.send(html);
-//            });
+            var loggedUser = {};
+            for (var u of objJSONFromFile.usuarios){
+                if ( u.key == req.cookies.loggedUserKey){
+                    loggedUser.photo = u.photo;
+                    loggedUser.name = u.name;
+                    loggedUser.userType = u.userType;
+                }
+            }
+            res.render('pages/CRUDTable', {"tableName":tableName, "array":arr, 'loggedUser':loggedUser});
         }
     );
     
@@ -66,7 +71,7 @@ router.get('/:tablename/:id', function(req, res){
         aux = 0;
     }else aux = 1;
     
-    fs.readFile("data/exitpoll_prueba.json", 'utf8',
+    fs.readFile("data/exitpoll.json", 'utf8',
         function (err, texto) {
             var objJSONFromFile = JSON.parse(texto);    
         
@@ -92,10 +97,6 @@ router.get('/:tablename/:id', function(req, res){
             if (rowId === '0'){
                 res.render('pages/CRUDinsert', {"tableName":tableName, "obj":obj, 'mode':'new', 'newId':newId});
             }else res.render('pages/CRUDinsert', {"tableName":tableName, "obj":obj, 'mode':'edit'});
-            
-//            res.render('pages/CRUDinsert', {"tableName":tableName, "obj":arr[0]}, function(err, html){
-//                res.send(html);
-//            });
         }
     );
 });
@@ -112,7 +113,7 @@ router.post('/:tablename/:id', function(req, res){
         newObj[attr] = req.body[attr];
     }
     
-    fs.readFile('data/exitpoll_prueba.json', 'utf8',
+    fs.readFile('data/exitpoll.json', 'utf8',
         function (err, texto) {
             var objJSONFromFile = JSON.parse(texto);
         
@@ -132,7 +133,7 @@ router.post('/:tablename/:id', function(req, res){
                     break;
                 default:
             }
-            fs.writeFile('data/exitpoll_prueba.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
+            fs.writeFile('data/exitpoll.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
                 if (err){
                     console.log(err);
                 }
@@ -148,7 +149,7 @@ router.delete('/:tablename/:id', function(req, res){
     var tableName = req.params.tablename;
     var rowId = req.params.id;
     
-    fs.readFile('data/exitpoll_prueba.json', 'utf8',
+    fs.readFile('data/exitpoll.json', 'utf8',
         function (err, texto) {
             var objJSONFromFile = JSON.parse(texto);
         
@@ -168,7 +169,7 @@ router.delete('/:tablename/:id', function(req, res){
                     break;
                 default:
             }
-            fs.writeFile('data/exitpoll_prueba.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
+            fs.writeFile('data/exitpoll.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
                 if (err){
                     console.log(err);
                     res.send({deleted:false});
@@ -188,7 +189,7 @@ router.put('/:tablename/:id', function(req, res){
     console.log(objEdited)
     var response = {}
     
-    fs.readFile('data/exitpoll_prueba.json', 'utf8',
+    fs.readFile('data/exitpoll.json', 'utf8',
         function (err, texto) {
             var objJSONFromFile = JSON.parse(texto);
             var objAux = {};
@@ -215,19 +216,44 @@ router.put('/:tablename/:id', function(req, res){
                     objAux[key] = objEdited[key];
                 }
             }
-            fs.writeFile('data/exitpoll_prueba.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
+            fs.writeFile('data/exitpoll.json', JSON.stringify(objJSONFromFile, null, 3), function(err, data){
                 if (err){
                     console.log(err);
                     res.send({edited:false});
                 }else res.send({edited:true});
             });  
-//            res.redirect('/admin/'+ tableName)
         }
     );
 });
 
 
-
+function isAuthenticated(req, res, next) {
+    if (req.cookies.loggedUserKey){
+        console.log('COOKIES FOUND');
+        var loggedUserKey = req.cookies.loggedUserKey;
+        
+        fs.readFile("data/exitpoll.json", 'utf8',
+            function (err, texto) {
+                var objJSONFromFile = JSON.parse(texto);
+                
+                for (var user of objJSONFromFile.usuarios){
+                    if (user.key === loggedUserKey){
+                        //El usuario está logeado
+                        //Se lo redirige a /admin o /encue dependiendo de que tipo de usuario es
+                        console.log('EL USUARIO YA ESTABA LOGEADO');
+                        return next();
+                    }else {
+                        //El id y key encontrados en las cookies no coinciden con un usuario del JSON
+                        //Se lo redirige a /login
+                        console.log('COOKIES ENCONTRADAS INCORRECTAS');
+                    }
+                }
+            }
+        );
+    
+    }
+    console.log('NO HAY COOKIES')
+}
 
 
 module.exports = router;
