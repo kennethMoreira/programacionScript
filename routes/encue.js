@@ -73,11 +73,11 @@ router.get('/votos/:id/binomios',function(req,res){
     var listBinomios = [];
        fs.readFile("data/exitpoll.json", 'utf8',
         function (err, texto) {
-            var objJSONFromFile = texto;
+            var objJSONFromFile = JSON.parse(texto);
             
-    for (var d of objJSONFromFile.elecciones[0].binomios){
-                        listBinomios.push(d);
-                    }
+            for (var d of objJSONFromFile.elecciones[0].binomios){
+                listBinomios.push(d);
+            }
             res.render('pages/binomios', {"binomios":listBinomios,"cedula":cedula});
 
         }
