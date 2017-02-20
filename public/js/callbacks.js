@@ -331,33 +331,39 @@ function votarParlamentarios(parlamentario,id){
 
 
 
-function registraVoto(binomios,asambleistas,parlamentarios,votacion){
-    console.log(binomios)//////
-//        var url = '/encue/votos/'+votacion.id
-//	    var datos = {
-//		     data: {
-//                'binomios':binomios,
-//                'asambleistas':asambleistas,
-//                'parlamentarios':parlamentarios,
-//                 'votacion':votacion
-//             },
-//            type: 'PUT',
-//            datatype: 'json'
-//        };
-//        
-//    
-//        $.ajax(url, datos)
-//        .done(function(data, status, xhr){
-//            //Mostrar la respuesta utilizando DOM y CSS
-//            if (data.saved){
-//                alert('Almacenado con éxito!');
-//                window.location.assign('/encue/votos/' + votacion.id+'/registrado/binomios/'+binomios.id+'/asambleistas/'+asambleistas.id+'/parlamentarios/'+parlamentarios.id+'/');
-//            }else {
-//                alert("No se creo votación");
-//            }
-//        })
-//        .fail(function(xhr, status, error){
-//            alert('ERROR DE CONEXIÓNnn');
-//        });
+function registraVoto(id, binomio, asambleista, parlamento){
+    
+      var url = '/encue/votos/'+id;
+	    var datos = {
+		     data: {
+                'id':id,
+                 'binomio':binomio,
+                 'asambleista':asambleista,
+                 'parlamento':parlamento
+                },
+            type: 'PUT',
+            datatype: 'json'
+        };
+        
+    
+        $.ajax(url, datos)
+        .done(function(data, status, xhr){
+            //Mostrar la respuesta utilizando DOM y CSS
+            if (data.edited){
+                console.log(data);
+                alert('éxito!');
+                
+                window.location.assign('/encue/votos/' + id+'/binomios/'+binomio+'asambleistas/'+asambleista+'/parlamentarios/'+parlamento);
+            }else {
+                alert("No se creo votación");
+            }
+        })
+        .fail(function(xhr, status, error){
+            alert('ERROR DE CONEXIÓNnn');
+        });
+    
+}
+    
+   
     
 }
