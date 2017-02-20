@@ -315,7 +315,9 @@ function votarParlamentarios(parlamentario,id){
         .done(function(data, status, xhr){
             //Mostrar la respuesta utilizando DOM y CSS
             if (data.edited){
+                console.log(data);
                 alert('éxito!');
+                
                 window.location.assign('/encue/votos/' + id);
             }else {
                 alert("No se creo votación");
